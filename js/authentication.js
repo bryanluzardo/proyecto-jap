@@ -1,5 +1,6 @@
 //para verificar si hay una sesión activa
 const closeSession = document.querySelector("#cerrar-sesion")
+
 if (localStorage.getItem('loggedIn') !== 'true') {
 
 //Si no existe una sesión activa, a continuación redirigimos al usuario a la página de login
