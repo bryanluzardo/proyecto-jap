@@ -188,3 +188,106 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+/*estilos para el formulario de login*/
+
+#login-page{
+background-image: url("../img/color amigable (1).png");
+background-size: cover;       
+background-position: center;  
+background-repeat: no-repeat; 
+background-attachment: fixed;
+margin: 0;
+font-family: 'Raleway', sans-serif;
+min-height: 100vh;
+}
+
+#login-title{
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  font-size: 3em;
+  font-family: 'Raleway', sans-serif; 
+  color: #f97a32;
+  text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+form {
+  background: rgba(255,255,255,0.85);
+  padding: 5rem; 
+  border-radius: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 450px;
+  max-height: 800px;
+  margin: 2rem auto; 
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; 
+  font-size: 1em;
+  font-family: 'Raleway', sans-serif;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #f97a32;
+  border-radius: 2rem;
+  font-size: 16px;
+  background-color: #f97a32;
+  color: #2e2e2e;}
+  
+
+form label{
+ display: block;
+ text-align: center;  
+ font-weight: bold;
+ font-family: 'Raleway', sans-serif;
+ font-size: 1.5em;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #2e2e2e;
+}
+
+::placeholder{
+  color: #2e2e2e;
+  align-items: justify;  
+  margin-top: auto;
+  font-family: 'Raleway', sans-serif;
+}
+
+#btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #3d3d3d;
+  color: white;
+  font-weight: lighter;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#btn-login:hover {
+  background-color: #222222;
+}
