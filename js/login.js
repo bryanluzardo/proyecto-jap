@@ -1,23 +1,25 @@
-// aquí comienza el redirect al home luego de realizar un login exitoso
-function redirectToHome() {
+const loginForm = document.getElementById("login-form");
+const password = document.getElementById("password");
+
+loginForm.addEventListener("submit", function(e) {
+    e.preventDefault(); //esto es para evitar que la página se recarge al hacer click en el botón
+
+    const user = document.getElementById("username").value.trim();
+    const pass = password.value.trim(); 
+
+    if (user === "" || pass === "") {
+        alert("Por favor completa los campos.");
+        return;
+    }
+ // acá hace el redirect ahora
 
     localStorage.setItem("loggedIn", "true");
-
-    //divido la función en dos partes, una que redirija, la parte principal, pero la primera es la que se asegura que los datos queden guardados.
-
     window.location.href = "index.html";
-}
-
-const btnLogin = document.getElementById("btn-login");
-if (btnLogin) {
-    btnLogin.addEventListener("click", redirectToHome);
-}
+});
 
 //js para el toggle de password
 
 const togglePassword = document.getElementById("togglePassword");
-const password = document.getElementById("password");
-
 togglePassword.addEventListener("click", function(){
 
     if (password.type === "password") {
