@@ -75,6 +75,8 @@ fetch(url)
   })
   .catch((error) => console.error("Error cargando productos:", error));
 
-const contenedorgrande = getElementsByClassName("contenedor");
+
+const contenedorgrande = document.querySelector(".contenedor");
+
 
 contenedorgrande.appendChild(productos);
