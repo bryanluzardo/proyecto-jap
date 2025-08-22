@@ -1,17 +1,8 @@
-@font-face {
-  font-family: CreatoDisplay;
-  src: url("../webfonts/creato_display/CreatoDisplay-Regular.otf")
-    format(opentype);
-  font-weight: normal;
-  font-style: normal;
-}
 
-@font-face {
-  font-family: "CreatoDisplay";
-  src: url("../webfonts/creato_display/CreatoDisplay-ExtraBold.otf")
-    format("opentype");
-  font-weight: bold;
-  font-style: normal;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
 .container {
@@ -35,7 +26,7 @@
   padding: 15px 15px;
   gap: 15px;
   border-radius: 10px;
-  font-family: CreatoDisplay;
+  font-family: "Montserrat", sans-serif;
 }
 
 .producto .foto {
@@ -125,42 +116,6 @@
   background-color: white;
   margin-top: 20px;
   padding: 20px 20px 20px 20px;
-}
-
-.navbar,
-.container,
-.navbar-expand-lg,
-.navbar-dark,
-.bg-dark,
-.p-1 {
-  background-color: white !important;
-  padding-top: 20px;
-}
-
-.navbar-nav {
-  display: flex;
-  flex-direction: row;
-  gap: 100px;
-  justify-content: space-evenly;
-}
-
-.nav-item {
-  background-color: rgb(255, 120, 30);
-  border-radius: 16px;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-shadow: 3px 3px 8px rgb(219, 219, 219);
-  transition: 0.3s;
-  color: white !important;
-  font-weight: bold;
-}
-
-.nav-link:hover {
-  text-decoration: underline;
-}
-
-.icono {
-  border-radius: 24px;
 }
 
 footer {
