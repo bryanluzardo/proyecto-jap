@@ -11,7 +11,7 @@ window.location.href = "login.html";
 closeSession.addEventListener("click", cerrarSesion)
 
 function cerrarSesion() {
-      localStorage.clear("loggedIn")
+      window.localStorage.clear("loggedIn")
       window.location = "login.html"
 }
 
