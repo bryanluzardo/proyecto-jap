@@ -1,6 +1,7 @@
 const loginForm = document.getElementById("login-form");
 const password = document.getElementById("password");
 
+
 loginForm.addEventListener("submit", function(e) {
     e.preventDefault(); //esto es para evitar que la página se recarge al hacer click en el botón
 
@@ -39,3 +40,8 @@ togglePassword.addEventListener("click", function(){
         togglePassword.classList.add("fa-eye");
     }
 })
+
+//para cerrar sesión
+
+
+
