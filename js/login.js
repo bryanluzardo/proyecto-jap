@@ -15,6 +15,8 @@ loginForm.addEventListener("submit", function(e) {
  // acá hace el redirect ahora
 
     localStorage.setItem("loggedIn", "true");
+    // para guardar el nombre de usuario o mail
+    localStorage.setItem("username", user);
     window.location.href = "index.html";
 });
 
