@@ -191,6 +191,10 @@ a.custom-card:hover {
 
 /*estilos para el formulario de login*/
 
+
+
+
+
 #login-page{
 background-image: url("../img/color amigable (1).png");
 background-size: cover;       
@@ -290,4 +294,12 @@ form label{
 
 #btn-login:hover {
   background-color: #222222;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* solo tablets */
+}
+
+@media (max-width: 320px) {
+  /* solo pantallas muy chicas como iPhone SE */
 }
