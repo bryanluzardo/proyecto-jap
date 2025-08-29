@@ -294,10 +294,34 @@ form label{
   background-color: #222222;
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-  /* solo tablets */
+/* Tablet vertical (768 x 1024) */
+@media (max-width: 1024px) {
+  form {
+    padding: 3rem;
+    max-width: 350px;
+  }
+
+  #login-title {
+    font-size: 2.5em;
+  }
 }
 
-@media (max-width: 320px) {
-  /* solo pantallas muy chicas como iPhone SE */
+/* Smartphone pequeño (320 x 568) */
+@media (max-width: 568px) {
+  form {
+    padding: 2rem;
+    max-width: 100%;
+    border-radius: 1rem;
+  }
+
+  #login-title {
+    font-size: 1.8em;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  #btn-login {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
