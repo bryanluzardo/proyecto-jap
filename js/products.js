@@ -1,10 +1,20 @@
-const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+const currentCategory = localStorage.getItem("catID");
+const url = `https://japceibal.github.io/emercado-api/cats_products/${currentCategory}.json`;
 const productos = document.getElementById("productos");
+const contenedorgrande = document.querySelector(".contenedor");
+
+
 
 fetch(url)
   .then((response) => response.json())
   .then((data) => {
+    
+    const h2 = document.createElement("h2");
+    h2.textContent = `Categoría: ${data.catName}`
+    productos.appendChild(h2)
+
     data.products.forEach((producto) => {
+      
       // Contenedor principal del producto
       const div = document.createElement("div");
       div.className = "producto";
@@ -63,6 +73,7 @@ fetch(url)
       bolsaDeCompras.className = "bolsa-de-compras";
 
       // Agrego todo al div principal
+      
       div.appendChild(img);
       div.appendChild(nombreDescripcion);
       div.appendChild(precioDiv);
@@ -71,12 +82,12 @@ fetch(url)
 
       // Agrego el producto al contenedor principal
       productos.appendChild(div);
+      
     });
+    
   })
   .catch((error) => console.error("Error cargando productos:", error));
 
-
-const contenedorgrande = document.querySelector(".contenedor");
 
 
 contenedorgrande.appendChild(productos);

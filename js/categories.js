@@ -5,6 +5,7 @@ let currentCategoriesArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
+console.log("hola")
 
 function sortCategories(criteria, array){
     let result = [];
@@ -40,11 +41,13 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
+
 function showCategoriesList(){
 
     let htmlContentToAppend = "";
     for(let i = 0; i < currentCategoriesArray.length; i++){
         let category = currentCategoriesArray[i];
+        
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
@@ -94,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             showCategoriesList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
+    
     });
 
     document.getElementById("sortAsc").addEventListener("click", function(){
