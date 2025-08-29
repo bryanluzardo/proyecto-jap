@@ -195,15 +195,14 @@ a.custom-card:hover {
 
 
 
-#login-page{
+body{
 background-image: url("../img/color amigable (1).png");
 background-size: cover;       
-background-position: center;  
+background-position: center; 
 background-repeat: no-repeat; 
-background-attachment: fixed;
 margin: 0;
 font-family: "Montserrat", sans-serif;
-min-height: 100vh;
+height: 100vh;
 }
 
 #login-title{
@@ -220,7 +219,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 1rem;
 }
 
