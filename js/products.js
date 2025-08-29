@@ -1,93 +1,79 @@
+import { Bolsa } from "../img/Bolsa-Compra.js";
+
 const currentCategory = localStorage.getItem("catID");
 const url = `https://japceibal.github.io/emercado-api/cats_products/${currentCategory}.json`;
 const productos = document.getElementById("productos");
 const contenedorgrande = document.querySelector(".contenedor");
 
-
-
 fetch(url)
   .then((response) => response.json())
   .then((data) => {
-    
     const h2 = document.createElement("h2");
-    h2.textContent = `Categoría: ${data.catName}`
-    productos.appendChild(h2)
+    h2.textContent = `Categoría: ${data.catName}`;
+    productos.appendChild(h2);
 
     data.products.forEach((producto) => {
-      
-      // Contenedor principal del producto
+      const { cost, currency, description, id, image, name, soldCount } = producto;
+
       const div = document.createElement("div");
       div.className = "producto";
 
-      // Imagen
       const img = document.createElement("img");
       img.className = "foto";
-      img.src = producto.image;
-      img.alt = producto.id;
+      img.src = image;
+      img.alt = description;
+      div.appendChild(img);
 
-      // Nombre y descripción
-      const nombreDescripcion = document.createElement("div");
-      nombreDescripcion.className = "nombre-descripcion";
+      const nombreYDescripcion = document.createElement("div");
+      nombreYDescripcion.className = "nombre-descripcion";
 
       const h4 = document.createElement("h4");
       h4.className = "nombre";
-      h4.textContent = producto.name;
+      h4.textContent = name;
 
-      const pDescripcion = document.createElement("p");
-      pDescripcion.className = "descripcion";
-      pDescripcion.textContent = producto.description;
+      const p = document.createElement("p");
+      p.className = "descripcion";
+      p.textContent = description;
 
-      nombreDescripcion.appendChild(h4);
-      nombreDescripcion.appendChild(pDescripcion);
+      nombreYDescripcion.appendChild(h4);
+      nombreYDescripcion.appendChild(p);
+      div.appendChild(nombreYDescripcion);
 
-      // Precio con título
-      const precioDiv = document.createElement("div");
-      precioDiv.className = "precio-descripcion";
+      const precioYVendidos = document.createElement("div");
+      precioYVendidos.className = "precio-ventas";
 
-      const precioTitulo = document.createElement("h4");
-      precioTitulo.textContent = "Precio";
+      const pPrecio = document.createElement("p");
+      pPrecio.className = "precio";
+      pPrecio.textContent = `${currency} ${cost}`;
 
-      const precioValor = document.createElement("p");
-      precioValor.className = "precio";
-      precioValor.textContent = `${producto.currency} ${producto.cost}`;
+      const pVendidos = document.createElement("p");
+      pVendidos.className = "ventas";
+      pVendidos.textContent = `Vendidos: ${soldCount}`;
 
-      precioDiv.appendChild(precioTitulo);
-      precioDiv.appendChild(precioValor);
+      precioYVendidos.appendChild(pPrecio);
+      precioYVendidos.appendChild(pVendidos);
+      div.appendChild(precioYVendidos);
 
-      // Ventas con título
-      const ventasDiv = document.createElement("div");
-      ventasDiv.className = "ventas-descripcion";
+      // Crear botón
+      const button = document.createElement("button");
+      button.className = "boton";
+      div.appendChild(button);
 
-      const ventasTitulo = document.createElement("h4");
-      ventasTitulo.textContent = "Ventas totales";
-
-      const ventasValor = document.createElement("p");
-      ventasValor.className = "sold-count";
-      ventasValor.textContent = producto.soldCount;
-
-      ventasDiv.appendChild(ventasTitulo);
-      ventasDiv.appendChild(ventasValor);
-
-      //botón para comprar
-      const bolsaDeCompras = document.createElement("div");
-      bolsaDeCompras.className = "bolsa-de-compras";
-
-      // Agrego todo al div principal
+      function updateButton() {
+        if (window.innerWidth < 520) {
+          button.textContent = "Agregar al carrito";
+        } else {
+          button.innerHTML = Bolsa();
+        }
+      }
       
-      div.appendChild(img);
-      div.appendChild(nombreDescripcion);
-      div.appendChild(precioDiv);
-      div.appendChild(ventasDiv);
-      div.appendChild(bolsaDeCompras);
-
-      // Agrego el producto al contenedor principal
+      updateButton(); 
+      window.addEventListener("resize", updateButton);
+      
       productos.appendChild(div);
-      
     });
-    
   })
   .catch((error) => console.error("Error cargando productos:", error));
-
-
-
-contenedorgrande.appendChild(productos);
+  
+  contenedorgrande.appendChild(productos);
+  
