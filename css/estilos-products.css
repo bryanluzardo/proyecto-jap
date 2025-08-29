@@ -148,3 +148,132 @@ footer a:hover {
   text-decoration: underline;
   color: white !important;
 }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .producto {
+    display: grid;
+    grid-template-columns: 200px 1fr auto; 
+    grid-template-rows: auto auto; 
+    grid-template-areas: 
+      "foto nombre precio bolsa"
+      "ventas descripcion descripcion bolsa"; 
+    align-items: center;
+    gap: 15px;
+  }
+
+ 
+  .producto .foto {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+  }
+
+  .ventas-descripcion {
+    order: 2;
+    margin-top: 10px;
+  }
+
+
+  .nombre-descripcion {
+    order: 3;
+    text-align: center;
+    align-items: center;
+  }
+
+ 
+  .precio-descripcion {
+    order: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bolsa-de-compras {
+    grid-area: bolsa;
+    width: 40px;
+    height: 40px;
+    align-self: end;
+    margin-top: 10px;
+  }
+}
+
+/* Télefono */
+
+@media (max-width: 576px) {
+  .producto {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 450px; 
+  }
+
+  .foto {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 5px;
+    z-index: 2;
+  }
+
+  .nombre {
+    position:absolute;
+    top: 45%;
+    left: 10px;
+    right: 10px;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  .descripcion {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    right: 10px;
+    align-contents: center;
+    font-style: italic;
+    font-size: 0.9em;
+    color: #444;
+  }
+
+  .precio-descripcion {
+    position: absolute;
+    top: 70%;
+    left: 10px;
+    font-size: 0.95em;
+    font-weight: bold;
+  }
+
+  .ventas-descripcion {
+    position: absolute;
+    top: 70%;
+    right: 10px;
+    font-size: 0.9em;
+    color: #555;
+  }
+
+  .boton-carrito {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+  }
+
+  .boton-carrito button {
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+  }
+}
