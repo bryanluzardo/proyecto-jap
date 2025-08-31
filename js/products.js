@@ -13,7 +13,7 @@ fetch(url)
     productos.appendChild(h2);
 
     data.products.forEach((producto) => {
-      const { cost, currency, description, id, image, name, soldCount } = producto;
+      const { cost, currency, description, image, name, soldCount } = producto;
 
       const div = document.createElement("div");
       div.className = "producto";
@@ -54,7 +54,6 @@ fetch(url)
       precioYVendidos.appendChild(pVendidos);
       div.appendChild(precioYVendidos);
 
-      // Crear botón
       const button = document.createElement("button");
       button.className = "boton";
       div.appendChild(button);
@@ -67,7 +66,6 @@ fetch(url)
         }
       }
       
-      updateButton(); 
       window.addEventListener("resize", updateButton);
       
       productos.appendChild(div);

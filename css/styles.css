@@ -176,7 +176,7 @@ footer p {
 }
 
 main {
-  min-height: calc(100vh - 210px);
+  min-height: 100vh;
 }
 
 a.custom-card,
@@ -195,14 +195,13 @@ a.custom-card:hover {
 
 
 
-#login-title{
+#login-page{
 background-image: url("../img/color amigable (1).png");
 background-size: cover;       
 background-position: center; 
 background-repeat: no-repeat; 
 margin: 0;
 font-family: "Montserrat", sans-serif;
-height: 100vh;
 }
 
 #login-title{
@@ -214,6 +213,8 @@ height: 100vh;
   color: #f97a32;
   text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
 }
+
+
 
 main {
   display: flex;
@@ -232,13 +233,13 @@ form {
   margin: 2rem auto; 
   display: flex;
   flex-direction: column;
-  gap: 0.75rem; 
   font-size: 1em;
   font-family: "Montserrat", sans-serif;
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="mail"] {
   width: 100%;
   padding: 12px;
   margin-top: 8px;
@@ -247,10 +248,11 @@ input[type="password"] {
   border-radius: 2rem;
   font-size: 16px;
   background-color: #f97a32;
-  color: #2e2e2e;}
+  color: #2e2e2e;
+}
   
 
-form label{
+form label:not([for="terminos"]) {
  display: block;
  text-align: center;  
  font-weight: bold;
@@ -301,3 +303,32 @@ form label{
 @media (max-width: 320px) {
   /* solo pantallas muy chicas como iPhone SE */
 }
+
+.terminos{
+  display: flex;
+  align-items: flex-start;
+}
+
+input[type="checkbox"] {
+  margin-top: 0.35rem;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  #login-title{
+    font-size: 2em;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="mail"] {
+    font-size: 14px;
+  }
+
+  form{
+    padding: 2rem;
+  }
+}
+
+
+
+
