@@ -65,7 +65,7 @@ fetch(url)
           button.innerHTML = Bolsa();
         }
       }
-      
+      updateButton()
       window.addEventListener("resize", updateButton);
       
       productos.appendChild(div);
