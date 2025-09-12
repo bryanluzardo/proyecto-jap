@@ -1,0 +1,12 @@
+.related-products{
+    display: flex;
+    justify-content: space-evenly;
+
+    div{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;   
+    }
+}
+

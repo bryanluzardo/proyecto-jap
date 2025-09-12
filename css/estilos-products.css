@@ -37,6 +37,7 @@ main.container {
 }
 
 
+
 .producto {
   display: flex;
   justify-content: space-between;
@@ -47,7 +48,11 @@ main.container {
   padding: 15px 15px;
   border-radius: 10px;
   font-family: "Montserrat", sans-serif;
+  transition: all ease 200ms;
 
+  &:hover{
+    cursor: pointer;
+  }
   
 }
 
