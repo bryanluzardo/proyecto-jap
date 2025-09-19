@@ -47,9 +47,9 @@ let listaActual = []; // guardamos los productos filtrados/ordenados
 
 // ordenar productos x precio asc, precio desc y relevancia
 function render(lista) {
-  contenedor.innerHTML = "";
+  contenedor.innerHTML = ""
   lista.forEach((p) => {
-    contenedor.appendChild(ProductCard(p));
+    contenedor.appendChild(ProductCard({...p}))
   });
 }
 
