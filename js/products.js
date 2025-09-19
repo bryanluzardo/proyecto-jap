@@ -80,4 +80,3 @@ formFiltro.addEventListener("submit", (e) => {
 // Ordenar con el select
 selectOrden.addEventListener("change", aplicarFiltrosYOrden);
 
-render(productosAPI);
