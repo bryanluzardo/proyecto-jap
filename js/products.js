@@ -1,7 +1,6 @@
 import { ProductCard } from "./ProductCard.js";
-import { updateButton } from "./utils.js";
+import { debounce, updateButton } from "./utils.js";
 
-const contenedorgrande = document.querySelector(".contenedor");
 const currentCategory = localStorage.getItem("catID");
 const url = `https://japceibal.github.io/emercado-api/cats_products/${currentCategory}.json`;
 const divProductos = document.getElementById("productos");
@@ -20,8 +19,12 @@ fetch(url)
     h1.textContent = data.catName;
     divTituloExtra.appendChild(h1);
 
+    
     productosAPI = data.products;
     render(productosAPI);
+
+
+    
   })
   .catch((error) => console.error("Error cargando productos:", error));
 
@@ -79,4 +82,14 @@ formFiltro.addEventListener("submit", (e) => {
 
 // Ordenar con el select
 selectOrden.addEventListener("change", aplicarFiltrosYOrden);
+
+function buscar ({list, input}) {
+  const filteredData = list.filter(x => x.description.toLowerCase().includes(input) || x.name.toLowerCase().includes(input))
+  render(filteredData)
+}
+
+// buscador
+const search = document.querySelector('#buscador')
+search.addEventListener('input', debounce(() => buscar({list: productosAPI, input: search.value.toLowerCase()}), 500))
+
 
