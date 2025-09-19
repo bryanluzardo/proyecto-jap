@@ -1,71 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      background-color: rgb(248, 249, 250);
-      backdrop-filter: blur(200px);
-    }
-  </style>
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link href="css/login.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: rgb(248, 249, 250);
+        backdrop-filter: blur(200px);
+      }
+    </style>
+  </head>
 
-<body id="login-page">
-  <main>
-    <div class="container">
-      
-      <form id="login-form">
+  <body id="login-page">
+    <main>
+      <div class="container">
+        <form id="login-form">
+          <div class="form-container">
+            <div class="info-form">
+              <p id="login-title">
+                Sign <span style="color: #9da7ff">In</span>
+              </p>
+              <div class="username">
+                <label for="username">Name</label>
+
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="name"
+                  required
+                />
+              </div>
+
+              <!-- <label for="mail">Correo Eléctronico: </label>
+
+                 <input type="mail" id="mail" name="mail" placeholder="Ingrese su correo" required><br><br>
         
-        
-        <div class="form-container">
-         <h1 id="login-title">¡Bienvenido!</h1>
+                 Lo dejé comentado en lugar de eliminarlo porque nos viene bien para un futuro si tenemos que hacer un registro!!-->
 
-        <label for="username">Usuario:</label>
+              <div class="contraseña">
+                <label for="password">Password</label>
+                <div class="contraseña-input-y-ojo">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="password"
+                    required
+                  />
 
-        <input type="text" id="username" name="username" placeholder="Ingrese su usuario" required><br><br>
+                  <i id="togglePassword" class="fa-solid fa-eye"></i>
+                </div>
+              </div>
+              <button type="submit" id="btn-login">Log in</button>
+            </div>
 
-        <!-- <label for="mail">Correo Eléctronico: </label>
-
-        <input type="mail" id="mail" name="mail" placeholder="Ingrese su correo" required><br><br>
-        
-        Lo dejé comentado en lugar de eliminarlo porque nos viene bien para un futuro si tenemos que hacer un registro!!-->
-
-        <label for="password">Contraseña:</label>
-
-        <div class="input-wrapper"><input type="password" id="password" name= "password" placeholder="*********"required> 
-
-        <i id="togglePassword" class="fa-solid fa-eye"></i>
-
-         </div>
-         <br>
-        </div>
-         
-         <!-- <div class="terminos">
+            <!-- <div class="terminos">
            <input type="checkbox" id="terminos" name="terminos">
            <label for="terminos"><small>Al marcar esta casilla y hacer clic en "registrarse",  confirmo que he leído y acepto los términos y condiciones.</small></label>
          </div> -->
-         <br>
-        <button type="submit" id="btn-login">Ingresar</button><br><br>
-      
+          </div>
+          <div class="imagen-ecommerce">
+            <img src="img/JaP pero en negro.png" alt="ecommerce" />
+          </div>
+        </form>
       </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-</body>
-<script src="js/login.js"></script>
-
+    </main>
+    <!--<footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>
+          Este sitio forma parte de
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jovenes a Programar</a
+          >
+        </p>
+      </div>
+    </footer> -->
+  </body>
+  <script src="js/login.js"></script>
 </html>

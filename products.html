@@ -15,7 +15,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/estilos-products.css" rel="stylesheet" /> 
+    <link href="css/estilos-products.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -44,51 +44,60 @@
               <a class="nav-link" href="sell.html">Vender</a>
             </li>
             <li class="nav-item icono"></li>
-            <li class="nav-item nav-link active" id="usuario" style="cursor: pointer;"></li>
-            <li class="nav-item nav-link active" id="cerrar-sesion" style="cursor: pointer;">Cerrar sesión</li>
+            <li
+              class="nav-item nav-link active"
+              id="usuario"
+              style="cursor: pointer"
+            ></li>
+            <li
+              class="nav-item nav-link active"
+              id="cerrar-sesion"
+              style="cursor: pointer"
+            >
+              Cerrar sesión
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!--filtros entrega 3-->   
-<form id="filtroPrecios">
-  <label for="precioMin">Precio Mínimo:</label>
-  <input type="number" id="precioMin" name="precioMin" min="0" step="1" placeholder="Ej: 50">
+    <div id="tituloExtraCategoria"></div>
 
-  <label for="precioMax">Precio Máximo:</label>
-  <input type="number" id="precioMax" name="precioMax" min="0" step="1" placeholder="Ej: 5000">
+    <!--filtros entrega 3-->
 
-  <button type="submit">Filtrar</button>
-</form>
+    <form id="filtroPrecios">
+      <label for="precioMin">Precio Mínimo:</label>
+      <input
+        type="number"
+        id="precioMin"
+        min="0"
+        step="1"
+        placeholder="Ej: 50"
+      />
 
+      <label for="precioMax">Precio Máximo:</label>
+      <input
+        type="number"
+        id="precioMax"
+        min="0"
+        step="1"
+        placeholder="Ej: 5000"
+      />
 
-    
-<form id="filtroPrecios">
-  <label for="precioMin">Precio Mínimo:</label>
-  <input type="number" id="precioMin"  min="0" step="1" placeholder="Ej: 50">
-
-  <label for="precioMax">Precio Máximo:</label>
-  <input type= "number" id="precioMax" min="0" step="1" placeholder="Ej: 5000">
-
-  <button type= "submit">Filtrar</button> 
-
- </form>
-
+      <button type="submit">Filtrar</button>
+    </form>
 
     <!-- Nuevo select para ordenar -->
 
-<label for="ordenar">Ordenar por:</label>
-<select id="ordenar>
-  <option value="precioAsc">Precio (menor a mayor)</option>
-  <option value="precioDesc">Precio (mayor a menor)</option>
-  <option value="relevancia">Relevancia(mas vendidos)</option>
-  </select>
+    <label for="ordenar">Ordenar por:</label>
+    <select id="ordenar">
+      <option value="precioAsc">Precio (menor a mayor)</option>
+      <option value="precioDesc">Precio (mayor a menor)</option>
+      <option value="relevancia">Relevancia (mas vendidos)</option>
+    </select>
 
-<div id="contenedorProductos"></div>
-  
-    
-    
+    <div id="contenedorProductos"></div>
+
     <!--desde aquí se edita-->
     <main class="pb-5 container">
       <div class="contenedor">
@@ -104,7 +113,9 @@
         </p>
         <p>
           Este sitio forma parte de
-          <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jovenes a Programar</a
+          >
         </p>
       </div>
     </footer>

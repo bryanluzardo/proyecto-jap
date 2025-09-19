@@ -2,7 +2,7 @@
 .card-body,
 .container,
 .site-header {
-  font-family: 'Verdana', serif !important;
+  font-family: 'Verdana', serif;
 }
 
 .jumbotron .display-4 {
@@ -195,7 +195,7 @@ a.custom-card:hover {
 
 
 
-#login-page{
+/*#login-page{
 background-image: url("../img/color amigable (1).png");
 background-size: cover;       
 background-position: center; 

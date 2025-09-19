@@ -1,128 +1,210 @@
-const links = [
-    'jfsad',
-    'gasdfkads',
-    'asdkfjndkjasf'
-]
+const links = ["jfsad", "gasdfkads", "asdkfjndkjasf"];
 
-export const ProductInfo = ({category, cost, currency, description, images, name, soldCount}) => {
-    
-    const productDiv = document.createElement('div')
-    // div para imagenes
-    const div1 = document.createElement('div')
-    // div para el resto
-    const div2 = document.createElement('div')
+export const ProductInfo = ({
+  category,
+  cost,
+  currency,
+  description,
+  images,
+  name,
+  soldCount,
+}) => {
+  const productDiv = document.createElement("div");
+  productDiv.classList.add("product-info-container");
+  // div para imagenes
+  const div1 = document.createElement("div");
+  div1.classList.add("product-info-images");
+  // div para el resto
+  const div2 = document.createElement("div");
+  div2.classList.add("product-info-details");
 
-    let currentImage = 0
+  let currentImage = 0;
 
-    // la imagen grande
-    const mainImage = document.createElement('img')
-    mainImage.classList.add('imagen-principal')
-    
-    // la galeria chica
-    const gallery = document.createElement('div')
-    gallery.classList.add('galleria')
+  // la imagen grande
+  const mainImage = document.createElement("img");
+  mainImage.classList.add("imagen-principal");
 
-    const changeGallery = () => {
-        mainImage.src = images[currentImage]
-        mainImage.alt = `Imagen ${currentImage + 1}`
-        gallery.innerHTML = ''
+  // la galeria chica
+  const gallery = document.createElement("div");
+  gallery.classList.add("galleria");
 
+  const changeGallery = () => {
+    mainImage.src = images[currentImage];
+    mainImage.alt = `Imagen ${currentImage + 1}`;
+    gallery.innerHTML = "";
 
-        // crea cada imagen de galeria
-        images.forEach((imgSrc, index) => {
-            if (index !== currentImage) {
-                const img = document.createElement('img');
-                img.src = imgSrc
-                img.alt = `Imagen ${index + 1}`
-                img.addEventListener('click', () => {
-                    currentImage = index
-                    changeGallery()
-                });
-                gallery.appendChild(img)
-            }
-        })
+    // crea cada imagen de galeria
+    images.forEach((imgSrc, index) => {
+      if (index !== currentImage) {
+        const img = document.createElement("img");
+        img.src = imgSrc;
+        img.alt = `Imagen ${index + 1}`;
+        img.addEventListener("click", () => {
+          currentImage = index;
+          changeGallery();
+        });
+        gallery.appendChild(img);
+      }
+    });
 
-        if (!div1.contains(mainImage)) div1.appendChild(mainImage)
-        if (!div1.contains(gallery)) div1.appendChild(gallery)
-    }
+    if (!div1.contains(mainImage)) div1.appendChild(mainImage);
+    if (!div1.contains(gallery)) div1.appendChild(gallery);
+  };
 
-    changeGallery()
+  changeGallery();
 
-    
+  // titulo
+  const titleDiv = document.createElement("div");
+  titleDiv.classList.add("titulo");
+  const title = document.createElement("h2");
+  title.textContent = name;
+  titleDiv.appendChild(title);
 
-    
-    // titulo
-    const titleDiv = document.createElement('div')
-    titleDiv.classList.add('titulo')
-    const title = document.createElement('h2')
-    title.textContent = name
-    titleDiv.appendChild(title)
+  // review (la parte de las estrellas), por ahora debe ser la cantidad de vendidos
+  const review = document.createElement("small");
+  const stars = `<span style="color: gold; font-size: 18px; margin-right: 60%;">★★★★★</span>`;
+  review.innerHTML = `${stars} (${soldCount} vendidos)`;
+  review.classList.add("review");
+  titleDiv.appendChild(review);
 
-    // review (la parte de las estrellas)
-    const review = document.createElement('small')
-    review.textContent = 'Muy bueno xd'
-    titleDiv.appendChild(review)
+  // precio
+  const price = document.createElement("h4");
+  price.classList.add("precio");
+  price.textContent = `${currency} ${cost}`;
+  titleDiv.appendChild(price);
 
-    // precio
-    const price = document.createElement('h4')
-    price.textContent = `$${cost} ${currency}`
-    titleDiv.appendChild(price)
+  div2.appendChild(titleDiv);
 
-    div2.appendChild(titleDiv)
+  // línea dividiendo
+  const divider = document.createElement("hr");
+  divider.classList.add("divider");
+  div2.appendChild(divider);
 
-    // descripcion
-    const productDescription = document.createElement('p')
-    productDescription.textContent = description
+  // descripcion
+  const descripcionDiv = document.createElement("div");
+  descripcionDiv.classList.add("descripcion-div");
+  const productDescription = document.createElement("p");
+  productDescription.classList.add("descripcion-producto");
+  productDescription.textContent = description;
 
-    div2.appendChild(productDescription)
+  descripcionDiv.appendChild(productDescription);
 
-    // botn de comprar y el input con la cantidad
-    const buyButton = document.createElement('div')
-    const quantity = document.createElement('input')
-    quantity.type = 'text'
-    quantity.value = 1
-    quantity.readOnly = true
+  div2.appendChild(descripcionDiv);
 
-    buyButton.appendChild(quantity)
-    
-    const button = document.createElement('button')
-    button.innerText = 'Agregar al carrito'
-    
-    buyButton.appendChild(button)
-    div2.appendChild(buyButton)
+  // linea dividiendo
+  const hr = document.createElement("hr");
+  hr.classList.add("linea");
+  div2.appendChild(hr);
 
-    // cantidad de ventas
-    const sellCount = document.createElement('p')
-    sellCount.textContent = `Vendidos: ${soldCount}`
+  // botn de comprar, color y el input con la cantidad
+  // no son funcionales por ahora y el de color es un extra
+  const buyButton = document.createElement("div");
+  buyButton.classList.add("buy-button");
 
-    div2.appendChild(sellCount)
+  const quantity = document.createElement("input");
+  quantity.classList.add("cantidad-productos");
+  quantity.type = "number";
+  quantity.value = 1;
+  quantity.min = 1;
+  quantity.max = 10;
+  quantity.step = 1;
 
+  buyButton.appendChild(quantity);
 
-    // los extras que aparecen abajo
-    const extras = document.createElement('div')
-    const categoryList = document.createElement('p')
-    categoryList.innerHTML = `<strong>Categoria: </strong> ${category}`
-    
-    const tagList = document.createElement('p')
-    tagList.innerHTML = `<strong>Tag: </strong> no se`
+  // selector de color (extra)
+  const colorSelectWrapper = document.createElement("div");
+  colorSelectWrapper.classList.add("color-select-wrapper");
 
-    // los links
-    const share = document.createElement('div')
-    const shareOptions = links.map(link => {
-        return `<a target='_blank' href=${link}>${link.split('')[0]}</a>`
-    })
+  const selectedColor = document.createElement("div");
+  selectedColor.classList.add("selected-color");
+  selectedColor.style.backgroundColor = "#000000";
+  colorSelectWrapper.appendChild(selectedColor);
 
+  const colorOptions = document.createElement("div");
+  colorOptions.classList.add("color-options");
 
-    share.innerHTML = `<strong> Compartir: </strong> ${shareOptions}`
+  const colores = ["#000000", "#4f4f4fff", "#8b8b8bff", "#b8b8b8ff"];
 
-    extras.appendChild(categoryList)
-    extras.appendChild(tagList)
-    extras.appendChild(share)
+  colores.forEach((c) => {
+    const colorBtn = document.createElement("div");
+    colorBtn.classList.add("color-btn");
+    colorBtn.style.backgroundColor = c;
 
-    div2.appendChild(extras)
+    colorBtn.addEventListener("click", () => {
+      selectedColor.style.backgroundColor = c;
+      colorOptions.style.display = "none";
+    });
 
-    productDiv.appendChild(div1)
-    productDiv.appendChild(div2)
+    colorOptions.appendChild(colorBtn);
+  });
 
-    return productDiv
-}
+  colorSelectWrapper.appendChild(colorOptions);
+
+  selectedColor.addEventListener("click", () => {
+    colorOptions.style.display =
+      colorOptions.style.display === "flex" ? "none" : "flex";
+  });
+
+  buyButton.appendChild(colorSelectWrapper);
+
+  // botón de agregar al carrito
+  const button = document.createElement("button");
+  button.classList.add("agregar-carrito");
+  button.innerText = "Agregar al carrito";
+
+  buyButton.appendChild(button);
+  div2.appendChild(buyButton);
+
+  //div para ver el carrito que por ahora no funciona
+  const divVerCarrito = document.createElement("div");
+  divVerCarrito.classList.add("ver-carrito-div");
+
+  //carrito tipo vector
+  const carritoIcon = document.createElement("img");
+  carritoIcon.src = "img/carro-de-la-compra.png";
+  carritoIcon.alt = "Icono carrito";
+  carritoIcon.classList.add("carrito-icon");
+  divVerCarrito.appendChild(carritoIcon);
+
+  //botón de ver carrito
+  const verCarrito = document.createElement("p");
+  verCarrito.classList.add("ver-carrito");
+  verCarrito.innerText = "Ver carrito";
+  divVerCarrito.appendChild(verCarrito);
+
+  div2.appendChild(divVerCarrito);
+
+  // linea dividiendo
+  const hr2 = document.createElement("hr");
+  hr2.classList.add("linea2");
+  div2.appendChild(hr2);
+
+  // los extras que aparecen abajo
+  const extras = document.createElement("div");
+  extras.classList.add("extra-details");
+  const categoryList = document.createElement("p");
+  categoryList.classList.add("extra-details-p");
+  categoryList.innerHTML = `<strong>Categoria: </strong> ${category}`;
+
+  const tagList = document.createElement("p");
+  tagList.innerHTML = `<strong>Tag: </strong> tag1, tag2`;
+
+  // los links, los quito por ahora
+  //const share = document.createElement("div");
+  //const shareOptions = links.map((link) => {
+  //return `<a target='_blank' href=${link}>${link.split("")[0]}</a>`;
+  //});
+
+  //share.innerHTML = `<strong> Compartir: </strong> ${shareOptions}`;
+
+  extras.appendChild(categoryList);
+  extras.appendChild(tagList);
+  //extras.appendChild(share);
+
+  div2.appendChild(extras);
+
+  productDiv.appendChild(div1);
+  productDiv.appendChild(div2);
+
+  return productDiv;
+};
