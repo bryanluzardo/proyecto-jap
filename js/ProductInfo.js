@@ -30,7 +30,7 @@ export const ProductInfo = ({
 
   const changeGallery = () => {
     mainImage.src = images[currentImage];
-    mainImage.alt = `Imagen ${currentImage + 1}`;
+    mainImage.alt = Imagen ${currentImage + 1};
     gallery.innerHTML = "";
 
     // crea cada imagen de galeria
@@ -38,7 +38,7 @@ export const ProductInfo = ({
       if (index !== currentImage) {
         const img = document.createElement("img");
         img.src = imgSrc;
-        img.alt = `Imagen ${index + 1}`;
+        img.alt = Imagen ${index + 1};
         img.addEventListener("click", () => {
           currentImage = index;
           changeGallery();
@@ -62,15 +62,15 @@ export const ProductInfo = ({
 
   // review (la parte de las estrellas), por ahora debe ser la cantidad de vendidos
   const review = document.createElement("small");
-  const stars = `<span style="color: gold; font-size: 18px; margin-right: 60%;">★★★★★</span>`;
-  review.innerHTML = `${stars} (${soldCount} vendidos)`;
+  const stars = <span style="color: gold; font-size: 18px; margin-right: 60%;">★★★★★</span>;
+  review.innerHTML = ${stars} (${soldCount} vendidos);
   review.classList.add("review");
   titleDiv.appendChild(review);
 
   // precio
   const price = document.createElement("h4");
   price.classList.add("precio");
-  price.textContent = `${currency} ${cost}`;
+  price.textContent = ${currency} ${cost};
   titleDiv.appendChild(price);
 
   div2.appendChild(titleDiv);
@@ -184,18 +184,18 @@ export const ProductInfo = ({
   extras.classList.add("extra-details");
   const categoryList = document.createElement("p");
   categoryList.classList.add("extra-details-p");
-  categoryList.innerHTML = `<strong>Categoria: </strong> ${category}`;
+  categoryList.innerHTML = <strong>Categoria: </strong> ${category};
 
   const tagList = document.createElement("p");
-  tagList.innerHTML = `<strong>Tag: </strong> tag1, tag2`;
+  tagList.innerHTML = <strong>Tag: </strong> tag1, tag2;
 
   // los links, los quito por ahora
   //const share = document.createElement("div");
   //const shareOptions = links.map((link) => {
-  //return `<a target='_blank' href=${link}>${link.split("")[0]}</a>`;
+  //return <a target='_blank' href=${link}>${link.split("")[0]}</a>;
   //});
 
-  //share.innerHTML = `<strong> Compartir: </strong> ${shareOptions}`;
+  //share.innerHTML = <strong> Compartir: </strong> ${shareOptions};
 
   extras.appendChild(categoryList);
   extras.appendChild(tagList);

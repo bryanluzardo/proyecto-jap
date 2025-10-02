@@ -1,7 +1,7 @@
 import { ProductInfo } from "./ProductInfo.js";
 import { ProductCard } from "./ProductCard.js";
 const currentProduct = window.localStorage.getItem("currentProductID");
-const url = `https://japceibal.github.io/emercado-api/products/${currentProduct}.json`;
+const url = https://japceibal.github.io/emercado-api/products/${currentProduct}.json;
 const contenedor = document.querySelector(".contenedor");
 
 fetch(url)
