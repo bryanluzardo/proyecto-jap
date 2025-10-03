@@ -3,9 +3,6 @@ import { getReviews } from "./utils.js";
 export async function crearResenia() {
   const productId = window.localStorage.getItem("currentProductID");
   
-
-  
-
   // Crear contenedor principal
   const contenedorResenias = document.createElement("div");
   contenedorResenias.classList.add("contenedor-reseñas");
@@ -100,7 +97,10 @@ export async function crearResenia() {
   async function cargarResenas() {
     listaResenas.innerHTML = "";
     const apiReviews = await getReviews(productId)
-    apiReviews.forEach((r) => mostrarResena(r));
+    apiReviews.forEach((r) => {
+      r.user = r.user.replace("_", " ");
+      mostrarResena(r);
+    });
     let allReviews = JSON.parse(localStorage.getItem("reseñas")) || [];
     let localReviews = allReviews[productId] || [];
     // Asegurar que todas tengan ID
@@ -108,6 +108,8 @@ export async function crearResenia() {
       if (!r.id) r.id = Date.now() + Math.random();
       return r;
     });
+
+
 
     checkForID(apiReviews);
     checkForID(localReviews);
