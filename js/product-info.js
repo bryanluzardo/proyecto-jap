@@ -7,9 +7,12 @@ const contenedor = document.querySelector(".contenedor");
 
 fetch(url)
   .then((response) => response.json())
-  .then((product) => {
+  .then( async (product) => {
     contenedor.appendChild(ProductInfo({ ...product }));
-    contenedor.appendChild(crearResenia())
+    const reviews = await crearResenia()
+    contenedor.appendChild(reviews)
+    
+    
 
     const relatedWrapper = document.createElement("div");
     relatedWrapper.classList.add("related-wrapper");

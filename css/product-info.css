@@ -49,12 +49,16 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  width: 100%;
 }
 
 .product-info-images .galleria img {
   flex: 1 1 calc(33.333% - 10px);
   width: calc(33.333% - 10px);
   height: auto;
+<<<<<<< HEAD
+  object-fit: contain;
+=======
   object-fit: cover;
   opacity: 50%;
   border-radius: 5px;
@@ -64,6 +68,7 @@ body {
     opacity: 100%;
     scale: 1.05;
   }
+>>>>>>> 3a6a2f98a244a310cb22a037fe341b2a0cbfa91e
   /*box-shadow: 1px 2.5px 4.5px 1px rgba(0, 0, 0, 0.2);*/
 }
 

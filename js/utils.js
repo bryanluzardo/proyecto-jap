@@ -16,3 +16,11 @@ export const updateButton = (button) => {
       button.innerHTML = Bolsa();
     }
   }
+
+
+export const getReviews = async (id) => {
+    const url = `https://japceibal.github.io/emercado-api/products_comments/${id}.json`
+    return fetch(url)
+    .then((response) => response.json())
+    .then((data) => data)
+}

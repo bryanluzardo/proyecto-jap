@@ -1,11 +1,13 @@
 import { ProductCard } from "./ProductCard.js";
 import { debounce, updateButton } from "./utils.js";
 
+
 const currentCategory = localStorage.getItem("catID");
 const url = `https://japceibal.github.io/emercado-api/cats_products/${currentCategory}.json`;
 const divProductos = document.getElementById("productos");
 
 let productosAPI = []; //para guardar los productos for real
+
 
 fetch(url)
   .then((response) => response.json())
@@ -13,6 +15,7 @@ fetch(url)
     const h2 = document.createElement("h4");
     h2.textContent = `Te encuentras en la categoría: ${data.catName}`;
     divProductos.appendChild(h2);
+    
 
     const divTituloExtra = document.getElementById("tituloExtraCategoria");
     const h1 = document.createElement("h1");
