@@ -49,13 +49,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  width: 100%;
 }
 
 .product-info-images .galleria img {
   flex: 1 1 calc(33.333% - 10px);
   width: calc(33.333% - 10px);
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   /*box-shadow: 1px 2.5px 4.5px 1px rgba(0, 0, 0, 0.2);*/
 }
 

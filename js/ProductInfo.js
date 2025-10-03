@@ -1,4 +1,4 @@
-const links = ["jfsad", "gasdfkads", "asdkfjndkjasf"];
+import { changeGallery } from "./gallery.js";
 
 export const ProductInfo = ({
   category,
@@ -28,30 +28,15 @@ export const ProductInfo = ({
   const gallery = document.createElement("div");
   gallery.classList.add("galleria");
 
-  const changeGallery = () => {
-    mainImage.src = images[currentImage];
-    mainImage.alt = `Imagen ${currentImage + 1}`;
-    gallery.innerHTML = "";
+  
 
-    // crea cada imagen de galeria
-    images.forEach((imgSrc, index) => {
-      if (index !== currentImage) {
-        const img = document.createElement("img");
-        img.src = imgSrc;
-        img.alt = `Imagen ${index + 1}`;
-        img.addEventListener("click", () => {
-          currentImage = index;
-          changeGallery();
-        });
-        gallery.appendChild(img);
-      }
-    });
-
-    if (!div1.contains(mainImage)) div1.appendChild(mainImage);
-    if (!div1.contains(gallery)) div1.appendChild(gallery);
-  };
-
-  changeGallery();
+  changeGallery({
+    images,
+    currentImage,
+    mainImage,
+    gallery,
+    div: div1,
+  });
 
   // titulo
   const titleDiv = document.createElement("div");
