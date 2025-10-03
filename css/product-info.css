@@ -60,6 +60,16 @@ body {
   /*box-shadow: 1px 2.5px 4.5px 1px rgba(0, 0, 0, 0.2);*/
 }
 
+.galleria img{
+  opacity: 80%;
+  transition: all ease-in-out;
+  :hover{
+    opacity: 100%;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+
 .product-info-details {
   display: flex;
   flex-direction: column;
@@ -260,9 +270,23 @@ body {
   display: contents;
 }
 
-.calificaciones {
-  text-align: center;
-  margin-bottom: 40px;
+.calificaciones{
+ align-items: center;
+ maring-top: 20px;
+ gap: 10px;
+ border: rgb(76, 76, 77);
+ width: 40em;
+ padding: 20px;
+}
+
+textarea{
+ align-items: center;
+ maring-top: 20px;
+ gap: 10px;
+ border: rgb(32, 32, 32);
+ border-radius: 1em;
+ width: 40em;
+ padding: 20px;
 }
 
 .estrella {
@@ -276,6 +300,20 @@ body {
   transform: scale(1.2);
 }
 
+.button-show {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background: #4d4d4d;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "DM sans", sans-serif;
+  font-size: 16px;
+  width: 10em;
+  align-self: center;
+}
 .calificaciones button {
   margin-top: 15px;
   padding: 10px 20px;

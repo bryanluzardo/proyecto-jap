@@ -11,6 +11,7 @@ export async function crearResenia() {
   const calificaciones = document.createElement("dialog");
   calificaciones.classList.add("calificaciones");
   const botonMostrar = document.createElement("button");
+  botonMostrar.classList.add("button-show");
   botonMostrar.textContent = "Escribir reseña";
   botonMostrar.addEventListener("click", () => {
   // Agregar el diálogo al DOM si aún no está agregado
