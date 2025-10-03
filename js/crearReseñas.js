@@ -4,10 +4,22 @@ export function crearResenia() {
   calificaciones.classList.add("calificaciones");
 
   // //espacio para escribir el comentario
-  const comentario = document.createElement("textarea");
-  comentario.placeholder = "Escriba su reseña aquí...";
-  comentario.classList.add("comentar-resenia");
+  // const comentario = document.createElement("textarea");
+  // comentario.placeholder = "Escriba su reseña aquí...";
+  // comentario.classList.add("comentar-resenia");
   //agregué esto para poder darle estilos en css
+
+  const boton = document.createElement("button");
+  boton.textContent = "Escribir mi opinión";
+  const comentario = document.createElement("textarea");
+
+  document.body.appendChild(boton);
+  boton.addEventListener("click", () => {
+    comentario.placeholder = "Escriba su reseña aquí...";
+    comentario.classList.add("comentar-resenia");
+    document.body.appendChild(comentario);
+    comentario.focus();
+  });
 
   const estrellasContainer = document.createElement("div");
   estrellasContainer.classList.add("estrellas-container");
