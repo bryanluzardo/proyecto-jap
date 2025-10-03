@@ -2,7 +2,7 @@ import { getReviews } from "./utils.js";
 
 export async function crearResenia() {
   const productId = window.localStorage.getItem("currentProductID");
-  
+
   // Crear contenedor principal
   const contenedorResenias = document.createElement("div");
   contenedorResenias.classList.add("contenedor-reseñas");
@@ -10,18 +10,17 @@ export async function crearResenia() {
   // ===== Formulario para crear reseña =====
   const calificaciones = document.createElement("dialog");
   calificaciones.classList.add("calificaciones");
+
   const botonMostrar = document.createElement("button");
   botonMostrar.classList.add("button-show");
   botonMostrar.textContent = "Escribir reseña";
   botonMostrar.addEventListener("click", () => {
-  // Agregar el diálogo al DOM si aún no está agregado
-  if (!calificaciones.isConnected) {
-    document.body.appendChild(calificaciones);
-  }
-  calificaciones.showModal();
-});
-
-
+    // Agregar el diálogo al DOM si aún no está agregado
+    if (!calificaciones.isConnected) {
+      document.body.appendChild(calificaciones);
+    }
+    calificaciones.showModal();
+  });
 
   // //espacio para escribir el comentario
   // const comentario = document.createElement("textarea");
@@ -31,15 +30,20 @@ export async function crearResenia() {
 
   const boton = document.createElement("button");
   boton.textContent = "Escribir mi opinión";
-  const comentario = document.createElement("textarea");
 
-  document.body.appendChild(boton);
-  boton.addEventListener("click", () => {
-    comentario.placeholder = "Escriba su reseña aquí...";
-    comentario.classList.add("comentar-resenia");
-    document.body.appendChild(comentario);
-    comentario.focus();
-  });
+  //const comentario = document.createElement("textarea");
+
+  //document.body.appendChild(boton);
+  //boton.addEventListener("click", () => {
+  //comentario.placeholder = "Escriba su reseña aquí...";
+  //comentario.classList.add("comentar-resenia");
+  //document.body.appendChild(comentario);
+  //comentario.focus();
+  //});
+
+  const comentario = document.createElement("textarea");
+  comentario.placeholder = "Escriba su reseña aquí...";
+  comentario.classList.add("comentar-resenia");
 
   const estrellasContainer = document.createElement("div");
   estrellasContainer.classList.add("estrellas-container");
@@ -90,7 +94,9 @@ export async function crearResenia() {
 
     div.innerHTML = `
       <div class="resena-header">
-        <img src="${r.foto || "https://avatar.iran.liara.run/public"}" alt="foto de ${r.user}">
+        <img src="${
+          r.foto || "https://avatar.iran.liara.run/public"
+        }" alt="foto de ${r.user}">
         <div>
           <p class="resena-nombre"><strong>${r.user}</strong></p>
           <div class="resena-estrellas">${"★".repeat(r.score)}</div>
@@ -117,16 +123,16 @@ export async function crearResenia() {
 
   // Guardar reseña en localStorage
   function guardarResena(r) {
-  let todas = JSON.parse(localStorage.getItem("reseñas")) || {};
-  if (!todas[productId]) todas[productId] = [];
-  todas[productId].push(r);
-  localStorage.setItem("reseñas", JSON.stringify(todas));
-}
+    let todas = JSON.parse(localStorage.getItem("reseñas")) || {};
+    if (!todas[productId]) todas[productId] = [];
+    todas[productId].push(r);
+    localStorage.setItem("reseñas", JSON.stringify(todas));
+  }
 
   // Cargar todas las reseñas guardadas
   async function cargarResenas() {
     listaResenas.innerHTML = "";
-    const apiReviews = await getReviews(productId)
+    const apiReviews = await getReviews(productId);
     apiReviews.forEach((r) => {
       r.user = r.user.replace("_", " ");
       mostrarResena(r);
@@ -134,11 +140,12 @@ export async function crearResenia() {
     let allReviews = JSON.parse(localStorage.getItem("reseñas")) || [];
     let localReviews = allReviews[productId] || [];
     // Asegurar que todas tengan ID
-    const checkForID = (reviews) => reviews.map((r) => {
-      if (!r.id) r.id = Date.now() + Math.random();
-      return r;
-    });
-    
+    const checkForID = (reviews) =>
+      reviews.map((r) => {
+        if (!r.id) r.id = Date.now() + Math.random();
+        return r;
+      });
+
     checkForID(apiReviews);
     checkForID(localReviews);
 
@@ -150,9 +157,11 @@ export async function crearResenia() {
 
   // Eliminar reseña
   function eliminarResena(id) {
-    let reseñas = JSON.parse(localStorage.getItem("reseñas")) || [];
+    let todasLasResenas = JSON.parse(localStorage.getItem("reseñas")) || {};
+    let reseñas = todasLasResenas[productId] || [];
     reseñas = reseñas.filter((r) => r.id !== id);
-    localStorage.setItem("reseñas", JSON.stringify(reseñas));
+    todasLasResenas[productId] = reseñas;
+    localStorage.setItem("reseñas", JSON.stringify(todasLasResenas));
     cargarResenas();
   }
 
@@ -177,7 +186,7 @@ export async function crearResenia() {
     comentario.value = "";
     rating = 0;
     pintarEstrellas(0);
-    calificaciones.close()
+    calificaciones.close();
   });
 
   // Cargar reseñas al inicio
