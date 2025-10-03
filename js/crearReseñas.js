@@ -1,5 +1,4 @@
-export function crearResenia () {
-
+export function crearResenia() {
   //espacio para poder realizar una calificación
   const calificaciones = document.createElement("div");
   calificaciones.classList.add("calificaciones");
@@ -65,10 +64,19 @@ export function crearResenia () {
     const div = document.createElement("div");
     div.classList.add("resena");
     div.innerHTML = `
-      <p><strong>${r.autor}</strong> - <em>${r.fechaHora}</em></p>
-      <p>${r.mensaje}</p>
-      <p>${"★".repeat(r.rating)}</p>
-    `;
+    <div class="resena-header">
+      <img src="${
+        r.foto || "https://avatar.iran.liara.run/public"
+      }" alt="foto de ${r.autor}">
+      <div>
+        <p class="resena-nombre"><strong>${r.autor}</strong></p>
+        <div class="resena-estrellas">${"★".repeat(r.rating)}</div>
+      </div>
+    </div>
+            <p class="resena-fecha"><em>${r.fechaHora}</em></p>
+</div>
+    <p class="resena-mensaje">${r.mensaje}</p>
+  `;
 
     if (r.autor === usuario) {
       const botonEliminar = document.createElement("button");
@@ -138,6 +146,5 @@ export function crearResenia () {
   contenedorResenias.appendChild(calificaciones);
   contenedorResenias.appendChild(listaResenas);
 
-  return contenedorResenias
-
+  return contenedorResenias;
 }
