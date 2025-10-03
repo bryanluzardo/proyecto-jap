@@ -177,6 +177,7 @@ export async function crearResenia() {
     comentario.value = "";
     rating = 0;
     pintarEstrellas(0);
+    calificaciones.close()
   });
 
   // Cargar reseñas al inicio
