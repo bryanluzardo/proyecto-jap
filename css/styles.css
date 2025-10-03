@@ -197,9 +197,9 @@ a.custom-card:hover {
 
 /*#login-page{
 background-image: url("../img/color amigable (1).png");
-background-size: cover;       
-background-position: center; 
-background-repeat: no-repeat; 
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 margin: 0;
 font-family: "Montserrat", sans-serif;
 }
@@ -209,7 +209,7 @@ font-family: "Montserrat", sans-serif;
   font-weight: 700;
   margin-bottom: 2rem;
   font-size: 3em;
-  font-family:"Montserrat", sans-serif; 
+  font-family:"Montserrat", sans-serif;
   color: #f97a32;
   text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
 }
@@ -225,12 +225,12 @@ main {
 
 form {
   background: rgba(255,255,255,0.85);
-  padding: 5rem; 
+  padding: 5rem;
   border-radius: 2rem;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   max-width: 450px;
   max-height: 800px;
-  margin: 2rem auto; 
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
   font-size: 1em;
@@ -250,11 +250,11 @@ input[type="mail"] {
   background-color: #f97a32;
   color: #2e2e2e;
 }
-  
+
 
 form label:not([for="terminos"]) {
  display: block;
- text-align: center;  
+ text-align: center;
  font-weight: bold;
  font-family: "Montserrat", sans-serif;
  font-size: 1.5em;
@@ -275,7 +275,7 @@ form label:not([for="terminos"]) {
 
 ::placeholder{
   color: #2e2e2e;
-  align-items: justify;  
+  align-items: justify;
   margin-top: auto;
   font-family: "Montserrat", sans-serif;
 }
@@ -298,7 +298,7 @@ form label:not([for="terminos"]) {
 
 @media (min-width: 481px) and (max-width: 768px) {
   /* solo tablets */
-}
+
 
 @media (max-width: 320px) {
   /* solo pantallas muy chicas como iPhone SE */
@@ -328,7 +328,3 @@ input[type="checkbox"] {
     padding: 2rem;
   }
 }
-
-
-
-

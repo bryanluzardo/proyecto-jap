@@ -253,6 +253,14 @@ body {
 
 /* estilos para las reseñas */
 
+.comentar-resenia {
+  width: 30em;
+  height: 5em;
+  border: 0.1em solid #747474;
+  border-radius: 0.5em;
+  resize: none;
+  align-self: center;
+}
 .contenedor-reseñas {
   max-width: fit-content;
   margin: 40 px auto;
@@ -261,6 +269,7 @@ body {
   display: row;
   flex-direction: row;
   gap: 20px;
+  display: contents;
 }
 
 .calificaciones {

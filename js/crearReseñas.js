@@ -11,8 +11,11 @@ export async function crearResenia() {
   const calificaciones = document.createElement("div");
   calificaciones.classList.add("calificaciones");
 
+  // //espacio para escribir el comentario
   const comentario = document.createElement("textarea");
   comentario.placeholder = "Escriba su reseña aquí...";
+  comentario.classList.add("comentar-resenia");
+  //agregué esto para poder darle estilos en css
 
   const estrellasContainer = document.createElement("div");
   estrellasContainer.classList.add("estrellas-container");
@@ -69,9 +72,12 @@ export async function crearResenia() {
           <div class="resena-estrellas">${"★".repeat(r.score)}</div>
         </div>
       </div>
-      <p class="resena-fecha"><em>${r.dateTime}</em></p>
-      <p class="resena-mensaje">${r.description}</p>
-    `;
+    </div>
+            <p class="resena-fecha"><em>${r.fechaHora}</em></p>
+</div>
+    <p class="resena-mensaje">${r.mensaje}</p>
+  `;
+    //ahí arriba metí mano para poner la foto de perfil, además de mover donde se ubicaban las estrellas, nombre y fecha.
 
     // Mostrar botón eliminar si el autor es el usuario actual
     if (r.user === usuarioResenas) {
