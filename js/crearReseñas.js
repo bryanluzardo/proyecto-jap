@@ -3,9 +3,11 @@ export function crearResenia() {
   const calificaciones = document.createElement("div");
   calificaciones.classList.add("calificaciones");
 
-  //espacio para escribir el comentario
+  // //espacio para escribir el comentario
   const comentario = document.createElement("textarea");
   comentario.placeholder = "Escriba su reseña aquí...";
+  comentario.classList.add("comentar-resenia");
+  //agregué esto para poder darle estilos en css
 
   const estrellasContainer = document.createElement("div");
   estrellasContainer.classList.add("estrellas-container");
@@ -48,7 +50,7 @@ export function crearResenia() {
 
   //botón de enviar
   const enviar = document.createElement("button");
-  enviar.textContent = "enviar";
+  enviar.textContent = "Enviar";
 
   calificaciones.appendChild(comentario);
   calificaciones.appendChild(estrellasContainer);
@@ -77,6 +79,7 @@ export function crearResenia() {
 </div>
     <p class="resena-mensaje">${r.mensaje}</p>
   `;
+    //ahí arriba metí mano para poner la foto de perfil, además de mover donde se ubicaban las estrellas, nombre y fecha.
 
     if (r.autor === usuario) {
       const botonEliminar = document.createElement("button");
