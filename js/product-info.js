@@ -12,8 +12,6 @@ fetch(url)
     const reviews = await crearResenia()
     contenedor.appendChild(reviews)
     
-    
-
     const relatedWrapper = document.createElement("div");
     relatedWrapper.classList.add("related-wrapper");
 

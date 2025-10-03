@@ -108,9 +108,7 @@ export async function crearResenia() {
       if (!r.id) r.id = Date.now() + Math.random();
       return r;
     });
-
-
-
+    
     checkForID(apiReviews);
     checkForID(localReviews);
 
