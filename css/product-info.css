@@ -56,7 +56,19 @@ body {
   flex: 1 1 calc(33.333% - 10px);
   width: calc(33.333% - 10px);
   height: auto;
+<<<<<<< HEAD
   object-fit: contain;
+=======
+  object-fit: cover;
+  opacity: 50%;
+  border-radius: 5px;
+  transition: all ease-in-out;
+  &:hover {
+    cursor: pointer;
+    opacity: 100%;
+    scale: 1.05;
+  }
+>>>>>>> 3a6a2f98a244a310cb22a037fe341b2a0cbfa91e
   /*box-shadow: 1px 2.5px 4.5px 1px rgba(0, 0, 0, 0.2);*/
 }
 
@@ -237,4 +249,143 @@ body {
 .related-products .producto .nombre-descripcion {
   font-family: "SFrounded", sans-serif !important;
   font-size: 12px;
+}
+
+/* estilos para las reseñas */
+
+.contenedor-reseñas {
+  max-width: fit-content;
+  margin: 40 px auto;
+  padding: 0 20px;
+  font-family: "SFrounded", sans-serif !important;
+  display: row;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.calificaciones {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.estrella {
+  font-size: 28px;
+  cursor: pointer;
+  color: #f5a623;
+  transition: transform 0.2s;
+}
+
+.estrella:hover {
+  transform: scale(1.2);
+}
+
+.calificaciones button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background: #4d4d4d;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "DM sans", sans-serif;
+  font-size: 16px;
+}
+.calificaciones button:hover {
+  background: #0c0c0c;
+}
+.lista-resenas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.resena {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(105, 105, 105, 0.1);
+  transition: transform 0.2s;
+}
+.resena:hover {
+  transform: translateY(-3px);
+}
+.resena p {
+  margin: 6px 0;
+}
+.resena strong {
+  font-size: 15px;
+}
+.resena em {
+  font-size: 12px;
+  color: #777;
+}
+
+.resena-fecha {
+  justify-content: right;
+  font-size: 12px;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.resena .eliminar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: #4d4d4d;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+.resena .eliminar:hover {
+  color: rgb(14, 12, 12);
+}
+
+.resena-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resena-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.resena-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.resena-nombre {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.resena-estrellas {
+  color: #f5a623;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.resena-fecha {
+  margin: 0;
+  font-size: 12px;
+  color: #777;
+}
+@media (max-width: 768px) {
+  .estrella {
+    font-size: 24px;
+  }
+  .calificaciones button {
+    width: 100%;
+  }
 }

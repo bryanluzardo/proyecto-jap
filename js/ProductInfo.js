@@ -177,10 +177,10 @@ export const ProductInfo = ({
   // los links, los quito por ahora
   //const share = document.createElement("div");
   //const shareOptions = links.map((link) => {
-  //return `<a target='_blank' href=${link}>${link.split("")[0]}</a>`;
+  //return <a target='_blank' href=${link}>${link.split("")[0]}</a>;
   //});
 
-  //share.innerHTML = `<strong> Compartir: </strong> ${shareOptions}`;
+  //share.innerHTML = <strong> Compartir: </strong> ${shareOptions};
 
   extras.appendChild(categoryList);
   extras.appendChild(tagList);

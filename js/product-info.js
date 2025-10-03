@@ -1,13 +1,18 @@
 import { ProductInfo } from "./ProductInfo.js";
 import { ProductCard } from "./ProductCard.js";
+import { crearResenia } from "./crearReseñas.js";
 const currentProduct = window.localStorage.getItem("currentProductID");
-const url = `https://japceibal.github.io/emercado-api/products/${currentProduct}.json`;
+const url = `https://japceibal.github.io/emercado-api/products/${currentProduct}.json`
 const contenedor = document.querySelector(".contenedor");
 
 fetch(url)
   .then((response) => response.json())
-  .then((product) => {
+  .then( async (product) => {
     contenedor.appendChild(ProductInfo({ ...product }));
+    const reviews = await crearResenia()
+    contenedor.appendChild(reviews)
+    
+    
 
     const relatedWrapper = document.createElement("div");
     relatedWrapper.classList.add("related-wrapper");
