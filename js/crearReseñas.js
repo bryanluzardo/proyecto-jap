@@ -8,14 +8,25 @@ export async function crearResenia() {
   contenedorResenias.classList.add("contenedor-reseñas");
 
   // ===== Formulario para crear reseña =====
-  const calificaciones = document.createElement("div");
+  const calificaciones = document.createElement("dialog");
   calificaciones.classList.add("calificaciones");
+  const botonMostrar = document.createElement("button");
+  botonMostrar.textContent = "Escribir reseña";
+  botonMostrar.addEventListener("click", () => {
+  // Agregar el diálogo al DOM si aún no está agregado
+  if (!calificaciones.isConnected) {
+    document.body.appendChild(calificaciones);
+  }
+  calificaciones.showModal();
+});
+
+
 
   // //espacio para escribir el comentario
   // const comentario = document.createElement("textarea");
   // comentario.placeholder = "Escriba su reseña aquí...";
   // comentario.classList.add("comentar-resenia");
-  //agregué esto para poder darle estilos en css
+  // agregué esto para poder darle estilos en css
 
   const boton = document.createElement("button");
   boton.textContent = "Escribir mi opinión";
@@ -85,9 +96,9 @@ export async function crearResenia() {
         </div>
       </div>
     </div>
-            <p class="resena-fecha"><em>${r.fechaHora}</em></p>
+            <p class="resena-fecha"><em>${r.dateTime}</em></p>
 </div>
-    <p class="resena-mensaje">${r.mensaje}</p>
+    <p class="resena-mensaje">${r.description}</p>
   `;
     //ahí arriba metí mano para poner la foto de perfil, además de mover donde se ubicaban las estrellas, nombre y fecha.
 
@@ -170,8 +181,9 @@ export async function crearResenia() {
   // Cargar reseñas al inicio
   cargarResenas();
 
-  contenedorResenias.appendChild(calificaciones);
   contenedorResenias.appendChild(listaResenas);
+  contenedorResenias.appendChild(botonMostrar);
+  contenedorResenias.appendChild(calificaciones);
 
   return contenedorResenias;
 }
