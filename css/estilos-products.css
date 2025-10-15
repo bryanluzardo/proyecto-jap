@@ -234,3 +234,79 @@ footer a:hover {
 }
 
 
+
+
+
+/* 🌙 DARK MODE | ENTREGA 5 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #f1f1f1;
+  }
+
+  main.container {
+    background-color: transparent;
+  }
+
+  .contenedor {
+    background-color: #1e1e1e;
+  }
+
+  .producto {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    border: 1px solid #3a3a3a;
+  }
+
+  .producto:hover {
+    background-color: #333333;
+  }
+
+  .nombre {
+    color: #ffffff;
+    text-decoration-color: #7db3ff;
+  }
+
+  .precio {
+    color: #66bb6a; /* Verde más suave para contraste */
+  }
+
+  .boton {
+    background-color: #2f2f2f;
+    color: #f1f1f1;
+    border: 1px solid #444;
+  }
+
+  .boton:hover {
+    background-color: #9ecbff;
+    color: #000;
+    font-weight: 600;
+  }
+
+  .bolsa-fill {
+    fill: #f1f1f1;
+  }
+
+  .bolsa-de-compra:hover .bolsa-fill {
+    fill: #9ecbff;
+  }
+
+  .filtros {
+    background-color: #1c1c1c;
+    border-radius: 6px;
+    padding: 5px;
+  }
+
+  footer {
+    background-color: #272727;
+  }
+
+  footer p,
+  footer a {
+    color: #e0e0e0;
+  }
+
+  footer a:hover {
+    color: #9ecbff !important;
+  }
+}
