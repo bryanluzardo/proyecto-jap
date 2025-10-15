@@ -430,3 +430,150 @@ textarea {
     width: 100%;
   }
 }
+
+  /* ...DARK MODE | ENTREGA 5... */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #f1f1f1;
+  }
+
+  .product-info-container {
+    background-color: #1e1e1e;
+  }
+
+  .product-info-images .imagen-principal,
+  .product-info-images .galleria img {
+    box-shadow: none;
+    filter: brightness(0.9);
+  }
+
+  .product-info-details {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+  }
+
+  .product-info-details h2 {
+    color: #ffffff;
+  }
+
+  .product-info-details .precio {
+    color: #a8e6a3;
+  }
+
+  .descripcion-producto {
+    color: #e0e0e0;
+  }
+
+  .divider,
+  .linea,
+  .linea2 {
+    border-top: 0.5px solid #444;
+  }
+
+  .buy-button {
+    background-color: transparent;
+  }
+ .agregar-carrito {
+    background-color: #9A9BD3;
+    color: #fff;
+  }
+
+  .agregar-carrito:hover {
+    background-color: #b1b2eb;
+  }
+   .cantidad-productos {
+    border: 1.5px solid #777;
+    background-color: #222;
+    color: #fff;
+  }
+
+  .color-options {
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+  }
+
+  .color-btn,
+  .selected-color {
+    border: 1.5px solid #777;
+  }
+
+  .ver-carrito {
+    color: #9ecbff;
+  }
+
+  .related-wrapper {
+    background-color: #1a1a1a;
+  }
+
+  .related-products {
+    background-color: #2a2a2a;
+  }
+
+  .related-products .producto {
+    background-color: #333;
+    color: #f1f1f1;
+  }
+
+  .comentar-resenia {
+    background-color: #9A9BD3;
+    color: #fff;
+    border: 0.1em solid #555;
+  }
+
+  textarea {
+    background-color: #1a1a1a;
+    color: #f1f1f1;
+    border: 1px solid #444;
+  }
+
+  .calificaciones {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    border: 1px solid #333;
+  }
+
+  .estrella {
+    color: #FFC120;
+  }
+
+  .button-show,
+  .calificaciones button {
+    background-color: #333;
+    color: #f5f5f5;
+  }
+
+  .button-show:hover,
+  .calificaciones button:hover {
+    background-color: #9ecbff;
+    color: #000;
+  }
+
+  .resena {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    box-shadow: none;
+    color: #f1f1f1;
+  }
+
+  .resena em,
+  .resena-fecha {
+    color: #aaa;
+  }
+
+  .resena .eliminar {
+    color: #ccc;
+    border: 1px solid #555;
+  }
+
+  .resena .eliminar:hover {
+    color: #fff;
+  }
+
+  .resena-header img {
+    filter: brightness(0.85);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
