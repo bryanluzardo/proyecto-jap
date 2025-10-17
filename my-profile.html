@@ -8,6 +8,14 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/my-profile.css" rel="stylesheet">
+ <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  integrity="sha512-TWlJj0vGtrzKx7XhvuL4Q6Gk4sFjvHoKMK+RzVf9hE7tSmnAGpOkdhrmM5iyP6vX5kVZV0ZPGy+ko9KwjB8Wfg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -54,10 +62,37 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <form>
+  <div class="perfil-image">
+    <img id="profile-picture" src="https://avatar.iran.liara.run/public" alt = "Foto de perfil">
+      </div>
+      <input type="file" id="newPfp" accept="image/*">
+      <button type="button" id = "uploadPfp"> Cambiar foto de perfil </button>
+  </div>
+    <div>
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre"><br><br>
+    </div>
+
+    <div>
+      <label for="apellido">Apellido</label>
+      <input type="text" id="apellido" name="apellido"><br><br>
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email"><br><br>
+    </div>
+
+    <div>
+      <label for="telefono">Teléfono de contacto</label>
+      <input type="tel" id="telefono" name="telefono">
+    </div>
+
+    <button type="submit">Actualizar</button>
       </div>
     </div>
+  </form>
   </main>
   <footer class="text-muted">
     <div class="container">
