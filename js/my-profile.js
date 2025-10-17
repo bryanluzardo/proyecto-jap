@@ -2,6 +2,7 @@ const newPfp = document.getElementById("newPfp");
 const profilePicture = document.getElementById("profile-picture");
 const uploadPfp = document.getElementById("uploadPfp");
 
+
 //previsualización de la pfp antes de subirla
 
 newPfp.addEventListener('change', () => {
@@ -44,3 +45,5 @@ window.addEventListener('load', () => {
     if (savedPfp){
         profilePicture.src = savedPfp;
     }})
+
+    

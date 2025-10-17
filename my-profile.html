@@ -9,12 +9,9 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/my-profile.css" rel="stylesheet">
- <link
+<link
   rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  integrity="sha512-TWlJj0vGtrzKx7XhvuL4Q6Gk4sFjvHoKMK+RzVf9hE7tSmnAGpOkdhrmM5iyP6vX5kVZV0ZPGy+ko9KwjB8Wfg=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 />
   <style>
     .bd-placeholder-img {
@@ -66,8 +63,14 @@
   <div class="perfil-image">
     <img id="profile-picture" src="https://avatar.iran.liara.run/public" alt = "Foto de perfil">
       </div>
-      <input type="file" id="newPfp" accept="image/*">
-      <button type="button" id = "uploadPfp"> Cambiar foto de perfil </button>
+      <label for="newPfp" class="camera-icon">
+    <i class="fa-solid fa-camera"></i>
+  </label>
+  <!-- Input oculto -->
+  <input type="file" id="newPfp" accept="image/*" hidden>
+</div>
+      <button id = "uploadPfp" class = "check-icon">
+      <i class="fa-solid fa-check"></i></button>
   </div>
     <div>
       <label for="nombre">Nombre</label>
