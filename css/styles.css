@@ -388,4 +388,4 @@ input[type="checkbox"] {
   form {
     background: rgba(15, 15, 15, 0.95);
     border: 1px solid #2b2b2b;
-    box-shadow: 0 4px 12px r
+    box-shadow: 0 4px 12px rgba (0, 0, 0, 0.5); }
