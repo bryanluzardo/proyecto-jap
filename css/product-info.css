@@ -431,7 +431,7 @@ textarea {
   }
 }
 
-  /* ...DARK MODE | ENTREGA 5... */
+/* ...DARK MODE | ENTREGA 5... */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #121212;
@@ -474,15 +474,15 @@ textarea {
   .buy-button {
     background-color: transparent;
   }
- .agregar-carrito {
-    background-color: #9A9BD3;
+  .agregar-carrito {
+    background-color: #9a9bd3;
     color: #fff;
   }
 
   .agregar-carrito:hover {
     background-color: #b1b2eb;
   }
-   .cantidad-productos {
+  .cantidad-productos {
     border: 1.5px solid #777;
     background-color: #222;
     color: #fff;
@@ -516,7 +516,7 @@ textarea {
   }
 
   .comentar-resenia {
-    background-color: #9A9BD3;
+    background-color: #9a9bd3;
     color: #fff;
     border: 0.1em solid #555;
   }
@@ -534,7 +534,7 @@ textarea {
   }
 
   .estrella {
-    color: #FFC120;
+    color: #ffc120;
   }
 
   .button-show,
@@ -575,5 +575,4 @@ textarea {
   }
 }
 
-@media (prefers-color-scheme: dark) 
-
+@media (prefers-color-scheme: dark);
