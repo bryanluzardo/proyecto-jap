@@ -44,9 +44,21 @@
               <a class="nav-link" href="sell.html">Vender</a>
             </li>
             <li class="nav-item icono"></li>
-            <li class="nav-item nav-link active" style="cursor: pointer;">
-            <a class="nav-link" href="my-profile.html" id="usuario">Mi Perfil</a>
-          </li>
+            <li class="nav-item nav-link active" style="cursor: pointer">
+              <a class="nav-link" href="my-profile.html" id="usuario"
+                >Mi Perfil</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="usuarioIcon">
+                <img
+                  class="nabvar-icon"
+                  src="https://avatar.iran.liara.run/public"
+                  alt="Foto de perfil"
+                  style="width: 30px; height: 30px; border-radius: 50%"
+                />
+              </a>
+            </li>
             <li
               class="nav-item nav-link active"
               id="cerrar-sesion"
@@ -65,28 +77,31 @@
 
     <div class="filtros">
       <div class="search-bar">
-        <label for="buscador">Buscar:
-        <input type="text" id="buscador" placeholder="Buscar...">
+        <label for="buscador"
+          >Buscar:
+          <input type="text" id="buscador" placeholder="Buscar..." />
         </label>
       </div>
       <form id="filtroPrecios">
-        <label for="precioMin">Precio Mínimo:
-        <input
-        type="number"
-          id="precioMin"
-          min="0"
-          step="1"
-          placeholder="Ej: 50"
-        />
+        <label for="precioMin"
+          >Precio Mínimo:
+          <input
+            type="number"
+            id="precioMin"
+            min="0"
+            step="1"
+            placeholder="Ej: 50"
+          />
         </label>
-        <label for="precioMax">Precio Máximo:
-        <input
-          type="number"
-          id="precioMax"
-          min="0"
-          step="1"
-          placeholder="Ej: 5000"
-        />
+        <label for="precioMax"
+          >Precio Máximo:
+          <input
+            type="number"
+            id="precioMax"
+            min="0"
+            step="1"
+            placeholder="Ej: 5000"
+          />
         </label>
         <button type="submit">Filtrar</button>
       </form>
@@ -102,7 +117,6 @@
     </div>
 
     <!-- Nuevo select para ordenar -->
-
 
     <div id="contenedorProductos"></div>
 
@@ -141,5 +155,7 @@
     <script src="js/init.js"></script>
     <script src="js/products.js" type="module"></script>
     <script src="js/authentication.js"></script>
+    <script src="js/my-profile.js"></script>
+    <script src="js/navbar-icon.js"></script>
   </body>
 </html>
