@@ -432,7 +432,7 @@ textarea {
 }
 
 /* ...DARK MODE | ENTREGA 5... */
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark), (body.dark-mode) {
   body {
     background-color: #121212;
     color: #f1f1f1;
@@ -575,4 +575,144 @@ textarea {
   }
 }
 
-@media (prefers-color-scheme: dark);
+/* dark mode con el botón */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode .product-info-container {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .product-info-images .imagen-principal,
+body.dark-mode .product-info-images .galleria img {
+  box-shadow: none;
+  filter: brightness(0.9);
+}
+
+body.dark-mode .product-info-details {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+body.dark-mode .product-info-details h2 {
+  color: #ffffff;
+}
+
+body.dark-mode .product-info-details .precio {
+  color: #a8e6a3;
+}
+
+body.dark-mode .descripcion-producto {
+  color: #e0e0e0;
+}
+
+body.dark-mode .divider,
+body.dark-mode .linea,
+body.dark-mode .linea2 {
+  border-top: 0.5px solid #444;
+}
+
+body.dark-mode .buy-button {
+  background-color: transparent;
+}
+body.dark-mode .agregar-carrito {
+  background-color: #9a9bd3;
+  color: #fff;
+}
+
+body.dark-mode .agregar-carrito:hover {
+  background-color: #b1b2eb;
+}
+body.dark-mode .cantidad-productos {
+  border: 1.5px solid #777;
+  background-color: #222;
+  color: #fff;
+}
+
+body.dark-mode .color-options {
+  background-color: #2a2a2a;
+  border: 1px solid #555;
+}
+
+body.dark-mode .color-btn,
+body.dark-mode .selected-color {
+  border: 1.5px solid #777;
+}
+
+body.dark-mode .ver-carrito {
+  color: #9ecbff;
+}
+
+body.dark-mode .related-wrapper {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .related-products {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .related-products .producto {
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+body.dark-mode .comentar-resenia {
+  background-color: #9a9bd3;
+  color: #fff;
+  border: 0.1em solid #555;
+}
+
+body.dark-mode textarea {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+  border: 1px solid #444;
+}
+
+body.dark-mode .calificaciones {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  border: 1px solid #333;
+}
+
+body.dark-mode .estrella {
+  color: #ffc120;
+}
+
+body.dark-mode .button-show,
+.calificaciones button {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+body.dark-mode .button-show:hover,
+.calificaciones button:hover {
+  background-color: #9ecbff;
+  color: #000;
+}
+
+body.dark-mode .resena {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  box-shadow: none;
+  color: #f1f1f1;
+}
+
+body.dark-mode .resena em,
+.resena-fecha {
+  color: #aaa;
+}
+
+body.dark-mode .resena .eliminar {
+  color: #ccc;
+  border: 1px solid #555;
+}
+
+body.dark-mode .resena .eliminar:hover {
+  color: #fff;
+}
+
+body.dark-mode .resena-header img {
+  filter: brightness(0.85);
+}
