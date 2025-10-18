@@ -384,3 +384,69 @@ input[type="checkbox"] {
     box-shadow: 0 4px 12px rgba (0, 0, 0, 0.5);
   }
 }
+
+/* dark mode con el botón */
+body.dark-mode {
+  background-color: #0d0d0d;
+  color: #f5f5f5;
+}
+
+body.dark-mode .jumbotron {
+  background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
+  color: #f5f5f5;
+}
+
+body.dark-mode .jumbotron .container {
+  background-color: rgba(0, 0, 0, 0.65);
+  border: 1px solid #2b2b2b;
+  text-shadow: none;
+}
+
+body.dark-mode .site-header a {
+  color: #d2d2ff;
+}
+
+body.dark-mode .site-header a:hover {
+  color: #9a9bd3;
+}
+
+body.dark-mode .site-header .dropdown-menu a {
+  color: #f5f5f5;
+}
+
+body.dark-mode .dropzone {
+  border: 2px dashed #9a9bd3;
+  background: #1a1a1a;
+}
+
+body.dark-mode .left {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode footer {
+  background-color: #000;
+  color: #e0e0e0;
+}
+
+body.dark-mode footer a {
+  color: #9a9bd3;
+}
+
+body.dark-mode footer a:hover {
+  color: #b1b2eb;
+}
+
+/* Formulario de login en modo oscuro */
+body.dark-mode form {
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid #2b2b2b;
+  box-shadow: 0 4px 12px rgba (0, 0, 0, 0.5);
+}
+
+body.dark-mode .bg-light {
+  background-color: #1c1c1c !important;
+}
+
+body.dark-mode .custom-card {
+  background-color: #333333;
+}
