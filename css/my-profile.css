@@ -82,6 +82,8 @@ main h1 {
   max-width: 500px;
   margin: 80px auto;
   position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 /* === Imagen de perfil === */
