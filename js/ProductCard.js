@@ -1,4 +1,6 @@
 import { Bolsa } from "../img/Bolsa-Compra.js";
+
+
 export const ProductCard = ({id, cost, currency, description, image, name, soldCount, isRelated = false}) => {
     const div = document.createElement("div");
     div.className = "producto";
@@ -41,6 +43,7 @@ export const ProductCard = ({id, cost, currency, description, image, name, soldC
         div.appendChild(precioYVendidos);
 
         const button = document.createElement("button");
+        
         button.className = "boton";
         button.innerHTML = window.innerWidth < 520 ? "Agregar al carrito" : Bolsa()
         div.appendChild(button);

@@ -24,3 +24,6 @@ export const getReviews = async (id) => {
     .then((response) => response.json())
     .then((data) => data)
 }
+
+
+

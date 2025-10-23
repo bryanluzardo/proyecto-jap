@@ -1,6 +1,9 @@
 import { changeGallery } from "./gallery.js";
+import { actualizarBadge } from "../img/Cart-icon.js";
+
 
 export const ProductInfo = ({
+  id,
   category,
   cost,
   currency,
@@ -134,6 +137,26 @@ export const ProductInfo = ({
 
   // botón de agregar al carrito
   const button = document.createElement("button");
+  button.onclick = () => {
+    const currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const productIndex = currentCart.findIndex((p) => p.id === id)
+    if (productIndex !== -1) {
+      return
+    } else {
+      currentCart.push({
+        id,
+        cost,
+        currency,
+        description,
+        images: images[currentImage],
+        name, 
+        quantity: parseInt(quantity.value)
+      })
+    }
+    localStorage.setItem("cart", JSON.stringify(currentCart))
+    const totalCount = JSON.parse(localStorage.getItem("cart")).length
+    actualizarBadge(totalCount)
+  }
   button.classList.add("agregar-carrito");
   button.innerText = "Agregar al carrito";
 
