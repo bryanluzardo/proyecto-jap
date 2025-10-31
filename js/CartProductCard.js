@@ -76,6 +76,43 @@ const CartProductCard = ({ product }) => {
     return card
 }
 
+
+const productDiv = document.createElement("div")
+
+const decrease = document.createElement("button")
+decrease.textContent = "-"
+decrease.style.cursor = "pointer"
+
+const quantity = document.createElement("span")
+quantity.textContent = product.quantity
+
+const increase = document.createElement("button")
+increase.textContent = "+"
+increase.style.cursor = "pointer"
+
+decrease.addEventListener("click", () => {
+  if (product.quantity > 1) {
+    product.quantity--
+    localStorage.setItem("cart", JSON.stringify(cart))
+    renderCart()
+  }
+})
+
+increase.addEventListener("click", () => {
+  product.quantity++
+  localStorage.setItem("cart", JSON.stringify(cart))
+  renderCart()
+})
+
+productDiv.appendChild(decrease)
+productDiv.appendChild(quantity)
+productDiv.appendChild(increase)
+
+container.appendChild(productDiv)
+
+
+    
+/* /
 const renderCart = () => {
     container.innerHTML = ""
     if (cart.length === 0) {
@@ -103,3 +140,4 @@ const renderCart = () => {
 }
 
 renderCart()
+
