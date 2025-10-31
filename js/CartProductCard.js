@@ -65,21 +65,17 @@ console.log("increase creado:", increase)
     card.appendChild(subtotal)
 
     const remove = document.createElement("button")
-    remove.textContent = "🗑️"
-    remove.style.cursor = "pointer"
-    remove.addEventListener("click", () => {
-        const index = cart.indexOf(product)
-        cart.splice(index, 1)
-        localStorage.setItem("cart", JSON.stringify(cart))
-        renderCart()
-    })
-    card.appendChild(remove)
+remove.textContent = "🗑️"
+remove.style.cursor = "pointer"
+remove.addEventListener("click", () => {
+  const index = cart.indexOf(product)
+  cart.splice(index, 1)
+  localStorage.setItem("cart", JSON.stringify(cart))
+  renderCart()
+})
 
-    return card
-}
-
-
-const productDiv = document.createElement("div")
+// crear los botones de cantidad
+const quantityWrapper = document.createElement("div")
 
 const decrease = document.createElement("button")
 decrease.textContent = "-"
@@ -106,11 +102,13 @@ increase.addEventListener("click", () => {
   renderCart()
 })
 
-productDiv.appendChild(decrease)
-productDiv.appendChild(quantity)
-productDiv.appendChild(increase)
+quantityWrapper.append(decrease, quantity, increase)
 
-container.appendChild(productDiv)
+// agregar todo al card
+card.appendChild(quantityWrapper)
+card.appendChild(remove)
+
+return card
 
 
     
@@ -142,5 +140,6 @@ const renderCart = () => {
 }
 
 renderCart()
+
 
 
