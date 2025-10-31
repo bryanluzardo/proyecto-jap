@@ -77,42 +77,8 @@ remove.addEventListener("click", () => {
 // crear los botones de cantidad
 const quantityWrapper = document.createElement("div")
 
-const decrease = document.createElement("button")
-decrease.textContent = "-"
-decrease.style.cursor = "pointer"
+const quantityWrapper = document.createElement("div")
 
-const quantity = document.createElement("span")
-quantity.textContent = product.quantity
-
-const increase = document.createElement("button")
-increase.textContent = "+"
-increase.style.cursor = "pointer"
-
-decrease.addEventListener("click", () => {
-  if (product.quantity > 1) {
-    product.quantity--
-    localStorage.setItem("cart", JSON.stringify(cart))
-    renderCart()
-  }
-})
-
-increase.addEventListener("click", () => {
-  product.quantity++
-  localStorage.setItem("cart", JSON.stringify(cart))
-  renderCart()
-})
-
-quantityWrapper.append(decrease, quantity, increase)
-
-// agregar todo al card
-card.appendChild(quantityWrapper)
-card.appendChild(remove)
-
-return card
-
-
-    
-/* /
 const renderCart = () => {
     container.innerHTML = ""
     if (cart.length === 0) {
@@ -141,5 +107,7 @@ const renderCart = () => {
 
 renderCart()
 
+return card
 
 
+    
