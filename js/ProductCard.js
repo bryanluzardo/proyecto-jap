@@ -45,7 +45,7 @@ export const ProductCard = ({id, cost, currency, description, image, name, soldC
         const button = document.createElement("button");
         
         button.className = "boton";
-        button.innerHTML = window.innerWidth < 520 ? "Agregar al carrito" : Bolsa()
+        button.innerHTML = window.innerWidth < 520 ? "Comprar" : Bolsa()
         div.appendChild(button);
     }
 
@@ -57,4 +57,5 @@ export const ProductCard = ({id, cost, currency, description, image, name, soldC
 
     return div
 } 
+
 
