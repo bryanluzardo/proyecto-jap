@@ -28,17 +28,6 @@ const CartProductCard = ({ product }) => {
     quantityContainer.style.alignItems = "center"
     quantityContainer.style.gap = "5px"
 
-    const decrease = document.createElement("button")
-    decrease.textContent = "-"
-    decrease.style.cursor = "pointer"
-
-    const quantity = document.createElement("span")
-    quantity.textContent = product.quantity
-
-   const increase = document.createElement("button")
-increase.textContent = "+"
-increase.style.cursor = "pointer"
-console.log("increase creado:", increase)
 
 
     decrease.addEventListener("click", () => {
@@ -111,3 +100,4 @@ return card
 
 
     
+
