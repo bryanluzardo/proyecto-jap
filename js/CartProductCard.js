@@ -35,9 +35,11 @@ const CartProductCard = ({ product }) => {
     const quantity = document.createElement("span")
     quantity.textContent = product.quantity
 
-    const increase = document.createElement("button")
-    increase.textContent = "+"
-    increase.style.cursor = "pointer"
+   const increase = document.createElement("button")
+increase.textContent = "+"
+increase.style.cursor = "pointer"
+console.log("increase creado:", increase)
+
 
     decrease.addEventListener("click", () => {
         if (product.quantity > 1) {
@@ -140,4 +142,5 @@ const renderCart = () => {
 }
 
 renderCart()
+
 
