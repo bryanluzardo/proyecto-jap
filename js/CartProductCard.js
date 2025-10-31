@@ -79,7 +79,7 @@ const CartProductCard = ({ product }) => {
 const renderCart = () => {
     container.innerHTML = ""
     if (cart.length === 0) {
-        container.innerHTML = '<h1>El carrito está vacío</h1>'
+        container.innerHTML = '<h1 class="empty-cart">El carrito está vacío</h1>'
         actualizarBadge(0)
         return
     }
@@ -95,7 +95,7 @@ const renderCart = () => {
 
     const total = document.createElement("p")
     total.textContent = `Total: USD ${totalAmount.toFixed(2)}`
-    total.style.fontWeight = "bold"
+    total.classList.add("total-amount")
     container.appendChild(total)
 
     const totalCount = JSON.parse(localStorage.getItem("cart")).length
