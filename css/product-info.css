@@ -432,7 +432,7 @@ textarea {
 }
 
 /* ...DARK MODE | ENTREGA 5... */
-@media (prefers-color-scheme: dark), (body.dark-mode) {
+@media (prefers-color-scheme: dark), .dark-mode {
   body {
     background-color: #121212;
     color: #f1f1f1;

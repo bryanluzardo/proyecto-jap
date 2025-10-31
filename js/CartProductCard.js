@@ -95,7 +95,7 @@ const renderCart = () => {
 
     const total = document.createElement("p")
     total.textContent = `Total: USD ${totalAmount.toFixed(2)}`
-    total.style.fontWeight = "bold"
+    total.classList.add("total-amount")
     container.appendChild(total)
 
     const totalCount = JSON.parse(localStorage.getItem("cart")).length
