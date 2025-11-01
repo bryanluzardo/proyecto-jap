@@ -28,6 +28,7 @@ const CartProductCard = ({ product }) => {
     quantityContainer.style.alignItems = "center"
     quantityContainer.style.gap = "5px"
 
+
     const decrease = document.createElement("button")
     decrease.textContent = "-"
     decrease.style.cursor = "pointer"
@@ -39,6 +40,7 @@ const CartProductCard = ({ product }) => {
    increase.classList.add("increase")
     increase.textContent = "+"
     increase.style.cursor = "pointer"
+
 
 
 
@@ -80,7 +82,7 @@ const CartProductCard = ({ product }) => {
     return card
 }
 
-    
+
 
 const renderCart = () => {
     container.innerHTML = ""
@@ -110,4 +112,8 @@ const renderCart = () => {
 
 renderCart()
 
+return card
+
+
+    
 

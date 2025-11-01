@@ -157,8 +157,8 @@ export const ProductInfo = ({
     const totalCount = JSON.parse(localStorage.getItem("cart")).length
     actualizarBadge(totalCount)
   }
-  button.classList.add("agregar-carrito");
-  button.innerText = "Agregar al carrito";
+  button.classList.add("Comprar");
+  button.innerText = "Comprar";
 
   const cartBtn = document.createElement("button")
   cartBtn.classList.add("agregar-carrito")
@@ -243,4 +243,5 @@ export const ProductInfo = ({
   productDiv.appendChild(div2);
 
   return productDiv;
+
 };
