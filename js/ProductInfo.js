@@ -160,6 +160,34 @@ export const ProductInfo = ({
   button.classList.add("agregar-carrito");
   button.innerText = "Agregar al carrito";
 
+  const cartBtn = document.createElement("button")
+  cartBtn.classList.add("agregar-carrito")
+  cartBtn.innerText = "Comprar"
+  cartBtn.onclick = () => {
+    const currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const productIndex = currentCart.findIndex((p) => p.id === id)
+    if (productIndex !== -1) {
+      return
+    } else {
+      currentCart.push({
+        id,
+        cost,
+        currency,
+        description,
+        images: images[currentImage],
+        name, 
+        quantity: parseInt(quantity.value)
+      })
+    }
+    localStorage.setItem("cart", JSON.stringify(currentCart))
+    const totalCount = JSON.parse(localStorage.getItem("cart")).length
+    actualizarBadge(totalCount)
+
+    window.location.href = "cart.html"
+  }
+
+  buyButton.appendChild(cartBtn)
+
   buyButton.appendChild(button);
   div2.appendChild(buyButton);
 
