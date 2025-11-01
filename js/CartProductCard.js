@@ -112,7 +112,6 @@ const renderCart = () => {
 
 renderCart()
 
-return card
 
 
     
