@@ -97,7 +97,7 @@ const renderCart = () => {
   }, 0);
 
   const total = document.createElement("p");
-  total.textContent = `Total: USD ${totalAmount.toFixed(2)}}`;
+  total.textContent = `Total: USD ${totalAmount.toFixed(2)}`;
   total.classList.add("total-amount");
   container.appendChild(total);
 
