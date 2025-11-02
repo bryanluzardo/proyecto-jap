@@ -125,7 +125,7 @@ h1 {
 } 
 
 /* eliminar */
-.cart-product-card button:last-child {
+.cart-product-card button:last-child:not(.increase) {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -135,7 +135,7 @@ h1 {
   border-inline: inherit;
 }
 
-.cart-product-card button:last-child:hover {
+.cart-product-card button:last-child:not(.increase):hover {
   background: #810b03;
   color: #fff;
   border-color: #810b03;

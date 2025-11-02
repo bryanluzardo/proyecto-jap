@@ -1,7 +1,6 @@
 import { changeGallery } from "./gallery.js";
 import { actualizarBadge } from "../img/Cart-icon.js";
 
-
 export const ProductInfo = ({
   id,
   category,
@@ -31,8 +30,6 @@ export const ProductInfo = ({
   const gallery = document.createElement("div");
   gallery.classList.add("galleria");
 
-  
-
   changeGallery({
     images,
     currentImage,
@@ -50,7 +47,9 @@ export const ProductInfo = ({
 
   // review (la parte de las estrellas), por ahora debe ser la cantidad de vendidos
   const review = document.createElement("small");
-  const stars = `<span style="color: gold; font-size: 18px; margin-right: 60%;">★★★★★</span>`;
+  const stars = (
+    <span style="color: gold; font-size: 18px; margin-right: 60%;">★★★★★</span>
+  );
   review.innerHTML = `${stars} (${soldCount} vendidos)`;
   review.classList.add("review");
   titleDiv.appendChild(review);
@@ -139,9 +138,9 @@ export const ProductInfo = ({
   const button = document.createElement("button");
   button.onclick = () => {
     const currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const productIndex = currentCart.findIndex((p) => p.id === id)
+    const productIndex = currentCart.findIndex((p) => p.id === id);
     if (productIndex !== -1) {
-      return
+      return;
     } else {
       currentCart.push({
         id,
@@ -149,16 +148,45 @@ export const ProductInfo = ({
         currency,
         description,
         images: images[currentImage],
-        name, 
-        quantity: parseInt(quantity.value)
-      })
+        name,
+        quantity: parseInt(quantity.value),
+      });
     }
-    localStorage.setItem("cart", JSON.stringify(currentCart))
-    const totalCount = JSON.parse(localStorage.getItem("cart")).length
-    actualizarBadge(totalCount)
-  }
-  button.classList.add("Comprar");
-  button.innerText = "Comprar";
+    localStorage.setItem("cart", JSON.stringify(currentCart));
+    const totalCount = JSON.parse(localStorage.getItem("cart")).length;
+    actualizarBadge(totalCount);
+  };
+
+  button.classList.add("agregar-carrito");
+  button.innerText = "Agregar al carrito";
+
+  const cartBtn = document.createElement("button");
+  cartBtn.classList.add("agregar-carrito");
+  cartBtn.innerText = "Comprar";
+  cartBtn.onclick = () => {
+    const currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const productIndex = currentCart.findIndex((p) => p.id === id);
+    if (productIndex !== -1) {
+      return;
+    } else {
+      currentCart.push({
+        id,
+        cost,
+        currency,
+        description,
+        images: images[currentImage],
+        name,
+        quantity: parseInt(quantity.value),
+      });
+    }
+    localStorage.setItem("cart", JSON.stringify(currentCart));
+    const totalCount = JSON.parse(localStorage.getItem("cart")).length;
+    actualizarBadge(totalCount);
+
+    window.location.href = "cart.html";
+  };
+
+  buyButton.appendChild(cartBtn);
 
   buyButton.appendChild(button);
   div2.appendChild(buyButton);
@@ -215,5 +243,4 @@ export const ProductInfo = ({
   productDiv.appendChild(div2);
 
   return productDiv;
-
 };
