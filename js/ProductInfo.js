@@ -48,7 +48,7 @@ export const ProductInfo = ({
   // review (la parte de las estrellas), por ahora debe ser la cantidad de vendidos
   const review = document.createElement("small");
   const stars = (
-    <span style="color: gold; font-size: 18px; margin-right: 60%;">★★★★★</span>
+    `<span style="color: gold; font-size: 18px; margin-right: 60%;">★★★★★</span>`
   );
   review.innerHTML = `${stars} (${soldCount} vendidos)`;
   review.classList.add("review");
