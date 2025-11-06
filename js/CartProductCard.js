@@ -1,8 +1,8 @@
 import { actualizarBadge } from "../img/Cart-icon.js";
 
-const container = document.querySelector(".cart-container");
+const containerSelector = ".cart-container";
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
 const CartProductCard = ({ product }) => {
   const costUSD = product.currency === "UYU" ? product.cost / 40 : product.cost;
@@ -60,9 +60,7 @@ const CartProductCard = ({ product }) => {
   card.appendChild(quantityContainer);
 
   const subtotal = document.createElement("p");
-  subtotal.textContent = `Subtotal: USD ${(costUSD * product.quantity).toFixed(
-    2
-  )}`;
+  subtotal.textContent = `Subtotal: USD ${(costUSD * product.quantity).toFixed(2)}`;
   card.appendChild(subtotal);
 
   const remove = document.createElement("button");
@@ -70,16 +68,24 @@ const CartProductCard = ({ product }) => {
   remove.style.cursor = "pointer";
   remove.addEventListener("click", () => {
     const index = cart.indexOf(product);
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart();
+    if (index > -1) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
   });
   card.appendChild(remove);
 
   return card;
 };
 
+const getContainer = () => document.querySelector(containerSelector);
+
 const renderCart = () => {
+  const container = getContainer();
+  cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  if (!container) return; // si la vista no está montada, no hacemos nada
+
   container.innerHTML = "";
   if (cart.length === 0) {
     container.innerHTML = '<h1 class="empty-cart">El carrito está vacío</h1>';
@@ -101,8 +107,21 @@ const renderCart = () => {
   total.classList.add("total-amount");
   container.appendChild(total);
 
-  const totalCount = JSON.parse(localStorage.getItem("cart")).length;
+  const totalCount = JSON.parse(localStorage.getItem("cart") || "[]").length;
   actualizarBadge(totalCount);
 };
 
-renderCart();
+
+if (window.location.hash === "#/cart") {
+  setTimeout(renderCart, 0);
+}
+
+
+window.addEventListener("hashchange", () => {
+  if (window.location.hash === "#/cart") {
+    setTimeout(renderCart, 0);
+  }
+});
+
+
+export { renderCart };

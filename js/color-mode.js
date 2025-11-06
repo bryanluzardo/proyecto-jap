@@ -1,21 +1,11 @@
-const toggleButton = document.getElementById("toggle-theme");
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("#toggle-theme");
+  if (!btn) return;
 
-toggleButton.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
-
-  toggleButton.textContent = document.body.classList.contains("dark-mode")
+  btn.textContent = document.body.classList.contains("dark-mode")
     ? "☀️ Modo Claro"
     : "🌙 Modo Oscuro";
 
-  // Opcional: guardar preferencia
-  localStorage.setItem(
-    "theme",
-    document.body.classList.contains("dark-mode") ? "dark" : "light"
-  );
+  localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
 });
-
-// Al cargar la página, respetar la preferencia guardada
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark-mode");
-  toggleButton.textContent = "☀️ Modo Claro";
-}

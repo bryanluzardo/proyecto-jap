@@ -1,4 +1,5 @@
 import { Bolsa } from "../img/Bolsa-Compra.js";
+import { initProductPage } from "./product-info.js";
 
 
 export const ProductCard = ({id, cost, currency, description, image, name, soldCount, isRelated = false}) => {
@@ -52,7 +53,8 @@ export const ProductCard = ({id, cost, currency, description, image, name, soldC
     div.onclick = () => {
         window.localStorage.removeItem('currentProduct')
         window.localStorage.setItem('currentProductID', id)
-        window.location.href = "product-info.html"
+        initProductPage()
+        window.scrollTo({ top: 0, behavior: "smooth" })
     }
 
     return div

@@ -183,7 +183,7 @@ export const ProductInfo = ({
     const totalCount = JSON.parse(localStorage.getItem("cart")).length;
     actualizarBadge(totalCount);
 
-    window.location.href = "cart.html";
+    window.location.href = "#/cart";
   };
 
   buyButton.appendChild(cartBtn);
