@@ -10,7 +10,9 @@ import { initProductPage } from "./product-info.js"
 import { Cart } from "./Componentes/Cart.js"
 import { renderCart } from "./CartProductCard.js"
 import { MyProfile } from "./Componentes/MyProfile.js"
-import { initNavbarIcon } from "./navbar-icon.js";
+import { initNavbarIcon } from "./navbar-icon.js"
+import { applySavedTheme } from "./color-mode.js"
+import { initProfileScript } from "./my-profile.js"
 
 
 const nav = document.querySelector('.navbar>.container')
@@ -19,6 +21,8 @@ const root = document.querySelector('#root')
 if (nav) {
   nav.innerHTML = Nav()
   initNavbarIcon()
+  applySavedTheme()
+  
 }
 
 function router() {
@@ -43,6 +47,7 @@ function router() {
     renderCart()
   } else if (path === '/my-profile') {
     root.innerHTML = MyProfile()
+    initProfileScript()
   } else {
     root.innerHTML = `<h2>404 - Página no encontrada</h2>`
   }

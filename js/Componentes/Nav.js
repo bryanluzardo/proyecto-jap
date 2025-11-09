@@ -1,64 +1,34 @@
+import { HouseIcon } from "../../img/HouseIcon.js"
+import { ColorModeIcon } from "../../img/ColorModeIcon.js"
+import { ProfileIcon } from "../../img/ProfileIcon.js"
+
 export function Nav() {
-    return (
-        /* html */`
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav w-100 justify-content-between">
-                <li class="nav-item">
-                <a class="nav-link active" href="#/index">Inicio</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#/categories">Categorías</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#/sell">Vender</a>
-                </li>
-                <li class="nav-item">
-                <button
-                    id="toggle-theme"
-                    class="nav-link btn btn-link"
-                    style="cursor: pointer"
-                >
-                    🌙
-                </button>
-                </li>
-                <li class="nav-item cart-icon">
-                
-                </li>
-                <li class="nav-item nav-link active" style="cursor: pointer">
-                <a class="nav-link" href="#/my-profile" id="usuario"
-                    >Mi Perfil</a
-                >
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" id="usuarioIcon">
-                    <img
-                    class="navbar-icon"
-                    src="https://avatar.iran.liara.run/public"
-                    alt="Foto de perfil"
-                    style="width: 30px; height: 30px; border-radius: 50%"
-                    />
-                </a>
-                </li>
-                <li
-                class="nav-item nav-link active"
-                id="cerrar-sesion"
-                style="cursor: pointer"
-                >
-              Cerrar sesión
-            </li>
-          </ul>
+  const currentTheme = localStorage.getItem("theme")
+  const color = currentTheme === "dark" ? "#fff" : "#000"
+
+  return (/* html */`
+    <nav class="site-nav">
+      <div class="nav-inner">
+        
+        <div class="nav-group" id="nav-left">
+          <a class="nav-link" href="#/index">${HouseIcon({ color })}</a>
+          <li class="nav-item cart-icon" aria-label="Carrito"> </li>
+          <button id="toggle-theme" class="btn-link" aria-pressed="${currentTheme === 'dark' ? 'true' : 'false'}">
+            ${ColorModeIcon({ currentTheme })}
+          </button>
         </div>
-      `
-    )
+
+       
+        <div class="nav-group" id="nav-right">
+          <a class="nav-link" style="color: var(--icon-color);" href="#/categories">Categorías</a>
+          <a class="nav-link" style="color: var(--icon-color);" href="#/sell">Vender</a>
+          <a class="nav-link" href="#/my-profile">${ProfileIcon()}</a>
+          <a class="nav-link" id="usuarioIcon" href="#/my-profile" aria-label="Perfil">
+            <img class="navbar-icon" src="https://avatar.iran.liara.run/public" alt="Foto de perfil" />
+          </a>
+          <button id="cerrar-sesion" class="btn-link" style="color: var(--icon-color);">Cerrar sesión</button>
+        </div>
+      </div>
+    </nav>
+  `)
 }

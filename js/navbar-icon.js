@@ -17,4 +17,6 @@ export function initNavbarIcon() {
   cart.innerHTML = CartIcon({ count });
   cart.style.cursor = "pointer";
   cart.addEventListener("click", () => window.location.href = "#/cart");
+  
+
 }
