@@ -15,9 +15,9 @@ export function Sell () {
         <!-- Nombre -->
         <div class="form-row">
           <div class="field">
-            <label for="productName">Nombre</label>
+            <label for="productName">Nombre: </label>
             <input type="text" id="productName" name="productName" />
-            <div class="invalid-feedback">Ingresa un nombre</div>
+            <div class="invalid-feedback hidden">Ingresa un nombre</div>
           </div>
         </div>
 
@@ -50,7 +50,7 @@ export function Sell () {
               value="0"
               min="0"
             />
-            <div class="invalid-feedback">El costo debe ser mayor que 0.</div>
+            <div class="invalid-feedback hidden">El costo debe ser mayor que 0.</div>
           </div>
 
           <div class="field medium-field">
@@ -60,7 +60,7 @@ export function Sell () {
               <option>Pesos Uruguayos (UYU)</option>
               <option>Dólares (USD)</option>
             </select>
-            <div class="invalid-feedback">Ingresa una categoría válida.</div>
+            <div class="invalid-feedback hidden">Ingresa una categoría válida.</div>
           </div>
         </div>
 
@@ -77,7 +77,7 @@ export function Sell () {
               <option>Computadoras</option>
               <option>Vestimenta</option>
             </select>
-            <div class="invalid-feedback">
+            <div class="invalid-feedback hidden">
               Por favor ingresa una categoría válida.
             </div>
           </div>
@@ -94,7 +94,7 @@ export function Sell () {
               value="1"
               min="0"
             />
-            <div class="invalid-feedback">La cantidad es requerida.</div>
+            <div class="invalid-feedback hidden">La cantidad es requerida.</div>
           </div>
         </div>
 
@@ -149,7 +149,7 @@ export function Sell () {
           </li>
 
           <li class="cost-item">
-            <span>Total ($)</span>
+            <span class="total">Total ($)</span>
             <strong id="totalCostText">-</strong>
           </li>
         </ul>
