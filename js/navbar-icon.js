@@ -7,12 +7,14 @@ export function initNavbarIcon() {
       icon.src = savedPfp;
     });
   }
-
-  const count = JSON.parse(localStorage.getItem("cart"))?.length || "";
-  actualizarBadge(count);
+  let count = 0
+  const items = JSON.parse(localStorage.getItem("cart"))
+  items?.forEach(item => count += item.quantity)
+  actualizarBadge(count)
+  console.log(count)
 
   const cart = document.querySelector(".cart-icon");
-  if (!cart) return; // evita el error si el nav aún no existe
+  if (!cart) return
 
   cart.innerHTML = CartIcon({ count });
   cart.style.cursor = "pointer";

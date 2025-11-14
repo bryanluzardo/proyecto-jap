@@ -107,8 +107,9 @@ const renderCart = () => {
   total.classList.add("total-amount");
   container.appendChild(total);
 
-  const totalCount = JSON.parse(localStorage.getItem("cart") || "[]").length;
-  actualizarBadge(totalCount);
+  let count = 0
+  cart?.forEach(item => count += item.quantity)
+  actualizarBadge(count)
 };
 
 
