@@ -232,6 +232,8 @@ body.dark-mode #checkout-button:hover {
   }
 }
 
+
+
 /* Celulares */
 @media (max-width: 480px) {
   body {
