@@ -1,10 +1,5 @@
 /* modo día de la lavada de cara numero 1000 que le hemos dado a esta cría */
 
-@font-face {
-    font-family: "SFrounded";
-    src: url("../webfonts/sf-fonts/sf-pro-rounded.woff") format("woff");
-}
-
 #cat-list-container{
   display: grid;
   grid-template-columns: repeat(2, 30em);
@@ -22,7 +17,6 @@ h2{
   font-family: "SFrounded", sans-serif;
   font-weight: bold;
   font-size:  2.5rem;
-  margin-bottom: none;
   margin-left: 9em;
   margin-top: 2em;
 }
