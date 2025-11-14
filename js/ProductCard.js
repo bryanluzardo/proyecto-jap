@@ -19,7 +19,7 @@ export const ProductCard = ({
   isRelated = false,
 }) => {
   return /* html */ `
-    <div class= "producto" onclick="()=>handleClick()">
+    <div class= "producto" onclick="handleClick()">
     <div class= "informacion-producto">
     <h3>${name}</h3>
     <p>${currency} ${cost}</p>
@@ -31,5 +31,6 @@ export const ProductCard = ({
     </div>
     `;
 };
+
 
 
