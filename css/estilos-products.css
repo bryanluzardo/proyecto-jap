@@ -116,4 +116,10 @@ body.dark-mode .producto:hover h3 {
     color: #000000;
   }
 }
-/* este mensaje es sólo para que git no ignore este archivo */
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenedorcito {
+    grid-template-columns: 1fr;
+  }
+}
