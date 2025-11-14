@@ -60,7 +60,9 @@ const CartProductCard = ({ product }) => {
   card.appendChild(quantityContainer);
 
   const subtotal = document.createElement("p");
-  subtotal.textContent = `Subtotal: USD ${(costUSD * product.quantity).toFixed(2)}`;
+  subtotal.textContent = `Subtotal: USD ${(costUSD * product.quantity).toFixed(
+    2
+  )}`;
   card.appendChild(subtotal);
 
   const remove = document.createElement("button");
@@ -107,16 +109,14 @@ const renderCart = () => {
   total.classList.add("total-amount");
   container.appendChild(total);
 
-  let count = 0
-  cart?.forEach(item => count += item.quantity)
-  actualizarBadge(count)
+  let count = 0;
+  cart?.forEach((item) => (count += item.quantity));
+  actualizarBadge(count);
 };
-
 
 if (window.location.hash === "#/cart") {
   setTimeout(renderCart, 0);
 }
-
 
 window.addEventListener("hashchange", () => {
   if (window.location.hash === "#/cart") {
@@ -124,196 +124,199 @@ window.addEventListener("hashchange", () => {
   }
 });
 
-
 export { renderCart };
 
 // a partir de este punto empieza el codigo de validación y feedback de compra
 
-// (function () {
+(function () {
+  const finishBuying = document.querySelector("#finish-buy-button");
 
-//   const finishBuying = document.querySelector("#finish-buy-button");
+  const feedbackContainer = document.createElement("div");
+  feedbackContainer.id = "feedbackCompra";
+  feedbackContainer.style.margin = "12px 0";
+  document.body.prepend(feedbackContainer);
 
-//   const feedbackContainer = document.createElement("div");
-//   feedbackContainer.id = "feedbackCompra";
-//   feedbackContainer.style.margin = "12px 0";
-//   document.body.prepend(feedbackContainer);
+  finishBuying.addEventListener("click", onFinishClick);
 
-//   finishBuying.addEventListener("click", onFinishClick);
+  function onFinishClick(e) {
+    clearFeedback();
+    const errors = [];
 
+    // Validar dirección
+    const addressOK = validateAddress(errors);
 
-//   function onFinishClick(e) {
-//     clearFeedback();
-//     const errors = [];
+    // Validar forma de envío
+    const shippingOK = validateShipping(errors);
 
-//     // Validar dirección
-//     const addressOK = validateAddress(errors);
+    // Validar cantidades y carrito
+    const productsOK = validateQuantities(errors);
 
-//     // Validar forma de envío
-//     const shippingOK = validateShipping(errors);
+    // Validar forma de pago
+    const paymentOK = validatePayment(errors);
 
-//     // Validar cantidades y carrito
-//     const productsOK = validateQuantities(errors);
+    // Si hay errores → mostrarlos
+    if (errors.length > 0) {
+      showErrors(errors);
+      return;
+    }
 
-//     // Validar forma de pago
-//     const paymentOK = validatePayment(errors);
+    // Si todo ta joya → éxito
+    showSuccess("¡Compra realizada con éxito!");
+  }
 
-//     // Si hay errores → mostrarlos
-//     if (errors.length > 0) {
-//       showErrors(errors);
-//       return;
-//     }
+  function validateAddress(errors) {
+    const address = (getValue("#direccion") || "").trim();
+    const city = (getValue("#ciudad") || "").trim();
 
-//     // Si todo ta joya → éxito
-//     showSuccess("¡Compra realizada con éxito!");
-//   }
+    if (!address || !city) {
+      errors.push("Por favor completá la dirección y la ciudad.");
+      highlightIfExists("#direccion");
+      highlightIfExists("#ciudad");
+      return false;
+    }
 
+    return true;
+  }
 
-//   function validateAddress(errors) {
-//     const address = (getValue("#direccion") || "").trim();
-//     const city = (getValue("#ciudad") || "").trim();
+  function validateShipping(errors) {
+    const select = document.querySelector("#shipping-method");
+    const radio = document.querySelector(
+      'input[name="shipping-method"]:checked'
+    );
 
-//     if (!address || !city) {
-//       errors.push("Por favor completá la dirección y la ciudad.");
-//       highlightIfExists("#direccion");
-//       highlightIfExists("#ciudad");
-//       return false;
-//     }
+    if (select && !select.value) {
+      errors.push("Por favor seleccioná un método de envío.");
+      highlightIfExists("#shipping-method");
+      return false;
+    }
 
-//     return true;
-//   }
+    if (!select && !radio) {
+      errors.push("Por favor seleccioná un método de envío.");
+      return false;
+    }
 
-//   function validateShipping(errors) {
-//     const select = document.querySelector("#shipping-method");
-//     const radio = document.querySelector('input[name="shipping-method"]:checked');
+    return true;
+  }
 
-//     if (select && !select.value) {
-//       errors.push("Por favor seleccioná un método de envío.");
-//       highlightIfExists("#shipping-method");
-//       return false;
-//     }
+  function validateQuantities(errors) {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-//     if (!select && !radio) {
-//       errors.push("Por favor seleccioná un método de envío.");
-//       return false;
-//     }
+    // Carrito vacío
+    if (cart.length === 0) {
+      errors.push("El carrito está vacío.");
+      return false;
+    }
 
-//     return true;
-//   }
+    let ok = true;
 
-//   function validateQuantities(errors) {
-//     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    // Validar cantidades del carrito
+    cart.forEach((item, i) => {
+      const cantidad = Number(item.quantity);
 
-//     // Carrito vacío
-//     if (cart.length === 0) {
-//       errors.push("El carrito está vacío.");
-//       return false;
-//     }
+      if (!Number.isFinite(cantidad) || cantidad <= 0) {
+        ok = false;
+        errors.push(
+          `La cantidad del producto ${item.name || i + 1} debe ser mayor a 0.`
+        );
+      }
+    });
 
-//     let ok = true;
+    // Validar inputs visibles
+    const inputs = document.querySelectorAll(".cantidad");
+    inputs.forEach((input) => {
+      const val = Number(input.value);
+      if (!Number.isFinite(val) || val <= 0) {
+        input.classList.add("input-error");
+      } else {
+        input.classList.remove("input-error");
+      }
+    });
 
-//     // Validar cantidades del carrito
-//     cart.forEach((item, i) => {
-//       const cantidad = Number(item.quantity);
+    return ok;
+  }
 
-//       if (!Number.isFinite(cantidad) || cantidad <= 0) {
-//         ok = false;
-//         errors.push(
-//           `La cantidad del producto ${item.name || i + 1} debe ser mayor a 0.`
-//         );
-//       }
-//     });
+  function validatePayment(errors) {
+    const select = document.querySelector("#payment-method");
+    const radio = document.querySelector(
+      'input[name="payment-method"]:checked'
+    );
 
-//     // Validar inputs visibles
-//     const inputs = document.querySelectorAll(".cantidad");
-//     inputs.forEach(input => {
-//       const val = Number(input.value);
-//       if (!Number.isFinite(val) || val <= 0) {
-//         input.classList.add("input-error");
-//       } else {
-//         input.classList.remove("input-error");
-//       }
-//     });
+    // Validación del método elegido (select o radio)
+    let metodo = null;
 
-//     return ok;
-//   }
+    if (select) metodo = select.value;
+    if (!select && radio) metodo = radio.value;
 
-//   function validatePayment(errors) {
-//     const select = document.querySelector("#payment-method");
-//     const radio = document.querySelector('input[name="payment-method"]:checked');
+    if (!metodo) {
+      errors.push("Por favor seleccioná un método de pago.");
+      highlightIfExists("#payment-method");
+      return false;
+    }
 
-//     // Validación del método elegido (select o radio)
-//     let metodo = null;
+    // Si el método es tarjeta → validar campos
+    if (metodo === "tarjeta") {
+      const nro = (getValue("#numeroTarjeta") || "").trim();
+      const titular = (getValue("#titularTarjeta") || "").trim();
+      const venc = (getValue("#vencimiento") || "").trim();
+      const cvv = (getValue("#cvv") || "").trim();
 
-//     if (select) metodo = select.value;
-//     if (!select && radio) metodo = radio.value;
+      if (!nro || !titular || !venc || !cvv) {
+        errors.push(
+          "Completá todos los datos de la tarjeta (número, titular, venc., CVV)."
+        );
+        ["#numeroTarjeta", "#titularTarjeta", "#vencimiento", "#cvv"].forEach(
+          highlightIfExists
+        );
+        return false;
+      }
+    }
 
-//     if (!metodo) {
-//       errors.push("Por favor seleccioná un método de pago.");
-//       highlightIfExists("#payment-method");
-//       return false;
-//     }
+    return true;
+  }
 
-//     // Si el método es tarjeta → validar campos
-//     if (metodo === "tarjeta") {
-//       const nro = (getValue("#numeroTarjeta") || "").trim();
-//       const titular = (getValue("#titularTarjeta") || "").trim();
-//       const venc = (getValue("#vencimiento") || "").trim();
-//       const cvv = (getValue("#cvv") || "").trim();
+  //funciones auxiliares
 
-//       if (!nro || !titular || !venc || !cvv) {
-//         errors.push("Completá todos los datos de la tarjeta (número, titular, venc., CVV).");
-//         ["#numeroTarjeta", "#titularTarjeta", "#vencimiento", "#cvv"].forEach(highlightIfExists);
-//         return false;
-//       }
-//     }
+  function getValue(selector) {
+    const el = document.querySelector(selector);
+    return el ? el.value : "";
+  }
 
-//     return true;
-//   }
+  function highlightIfExists(selector) {
+    const el = document.querySelector(selector);
+    if (el) el.classList.add("input-error");
+  }
 
-//   //funciones auxiliares
+  function clearFeedback() {
+    feedbackContainer.innerHTML = "";
+    document
+      .querySelectorAll(".input-error")
+      .forEach((el) => el.classList.remove("input-error"));
+  }
 
-//   function getValue(selector) {
-//     const el = document.querySelector(selector);
-//     return el ? el.value : "";
-//   }
+  function showErrors(errores) {
+    const ul = document.createElement("ul");
+    ul.style.color = "#b71c1c";
+    ul.style.background = "#ffebee";
+    ul.style.padding = "10px";
+    ul.style.borderRadius = "6px";
 
-//   function highlightIfExists(selector) {
-//     const el = document.querySelector(selector);
-//     if (el) el.classList.add("input-error");
-//   }
+    errores.forEach((msg) => {
+      const li = document.createElement("li");
+      li.textContent = msg;
+      ul.appendChild(li);
+    });
 
-//   function clearFeedback() {
-//     feedbackContainer.innerHTML = "";
-//     document
-//       .querySelectorAll(".input-error")
-//       .forEach(el => el.classList.remove("input-error"));
-//   }
+    feedbackContainer.appendChild(ul);
+  }
 
-//   function showErrors(errores) {
-//     const ul = document.createElement("ul");
-//     ul.style.color = "#b71c1c";
-//     ul.style.background = "#ffebee";
-//     ul.style.padding = "10px";
-//     ul.style.borderRadius = "6px";
-
-//     errores.forEach(msg => {
-//       const li = document.createElement("li");
-//       li.textContent = msg;
-//       ul.appendChild(li);
-//     });
-
-//     feedbackContainer.appendChild(ul);
-//   }
-
-//   function showSuccess(msg) {
-//     const p = document.createElement("p");
-//     p.textContent = msg;
-//     p.style.color = "#1b5e20";
-//     p.style.background = "#e8f5e9";
-//     p.style.padding = "12px";
-//     p.style.borderRadius = "6px";
-//     feedbackContainer.appendChild(p);
-//     feedbackContainer.scrollIntoView({ behavior: "smooth", block: "center" });
-//   }
-
-// })();
+  function showSuccess(msg) {
+    const p = document.createElement("p");
+    p.textContent = msg;
+    p.style.color = "#1b5e20";
+    p.style.background = "#e8f5e9";
+    p.style.padding = "12px";
+    p.style.borderRadius = "6px";
+    feedbackContainer.appendChild(p);
+    feedbackContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+})();
