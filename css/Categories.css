@@ -116,15 +116,13 @@ body.dark-mode .list-group-item {
 }
 
 body.dark-mode .list-group-item:hover {
-  background-color: #3a3a3a;
+  background-color: #859fb3;
 }
 
 body.dark-mode #filtros-superior,
 body.dark-mode #filtros-inferior {
-  color: #f0f0f0;
+color: #f0f0f0;
 } 
-
-
 
 /* Responsive */
 @media (max-width: 768px) {
