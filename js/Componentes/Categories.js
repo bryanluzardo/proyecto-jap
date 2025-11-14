@@ -2,7 +2,7 @@ export function Categories () {
     return (
         /* html */`
         <div class="text-center p-4">
-        <h2>Categorías</h2>
+        <h2 class="categories-title">Categorías</h2>
       </div>
       <div class="container">
         <div class="row">

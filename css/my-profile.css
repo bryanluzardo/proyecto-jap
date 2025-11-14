@@ -90,7 +90,10 @@ main h1 {
 .perfil-image {
   text-align: center;
   margin-bottom: 20px;
+  position: relative;
 }
+
+
 
 #profile-picture {
   width: 120px;
@@ -103,15 +106,13 @@ main h1 {
 /* === Ícono de cámara y check === */
 .camera-icon,
 .check-icon {
-  display: inline-block;
+  top: 67%;
+  right: 36%;
+  position: absolute;
   cursor: pointer;
-  margin: 10px auto;
-  text-align: center;
-  font-size: 1.5rem;
-  color: #007bff;
-  background: none;
-  border: none;
 }
+
+
 
 .check-icon {
   margin-left: 10px;
