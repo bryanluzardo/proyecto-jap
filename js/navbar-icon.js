@@ -11,7 +11,6 @@ export function initNavbarIcon() {
   const items = JSON.parse(localStorage.getItem("cart"))
   items?.forEach(item => count += item.quantity)
   actualizarBadge(count)
-  console.log(count)
 
   const cart = document.querySelector(".cart-icon");
   if (!cart) return

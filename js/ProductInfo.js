@@ -13,9 +13,11 @@ export const ProductInfo = ({
 }) => {
   const productDiv = document.createElement("div");
   productDiv.classList.add("product-info-container");
+
   // div para imagenes
   const div1 = document.createElement("div");
   div1.classList.add("product-info-images");
+
   // div para el resto
   const div2 = document.createElement("div");
   div2.classList.add("product-info-details");
@@ -26,7 +28,7 @@ export const ProductInfo = ({
   const mainImage = document.createElement("img");
   mainImage.classList.add("imagen-principal");
 
-  // la galeria chica
+  // galería chica
   const gallery = document.createElement("div");
   gallery.classList.add("galleria");
 
@@ -36,6 +38,7 @@ export const ProductInfo = ({
     mainImage,
     gallery,
     div: div1,
+    onChange: (i) => (currentImage = i),
   });
 
   // titulo
@@ -45,11 +48,9 @@ export const ProductInfo = ({
   title.textContent = name;
   titleDiv.appendChild(title);
 
-  // review (la parte de las estrellas), por ahora debe ser la cantidad de vendidos
+  // review
   const review = document.createElement("small");
-  const stars = (
-    `<span style="color: gold; font-size: 18px; margin-right: 60%;">★★★★★</span>`
-  );
+  const stars = `<span style="color: gold; font-size: 18px; margin-right: 60%;">★★★★★</span>`;
   review.innerHTML = `${stars} (${soldCount} vendidos)`;
   review.classList.add("review");
   titleDiv.appendChild(review);
@@ -63,9 +64,7 @@ export const ProductInfo = ({
   div2.appendChild(titleDiv);
 
   // línea dividiendo
-  const divider = document.createElement("hr");
-  divider.classList.add("divider");
-  div2.appendChild(divider);
+  div2.appendChild(document.createElement("hr"));
 
   // descripcion
   const descripcionDiv = document.createElement("div");
@@ -73,18 +72,28 @@ export const ProductInfo = ({
   const productDescription = document.createElement("p");
   productDescription.classList.add("descripcion-producto");
   productDescription.textContent = description;
-
   descripcionDiv.appendChild(productDescription);
-
   div2.appendChild(descripcionDiv);
 
-  // linea dividiendo
-  const hr = document.createElement("hr");
-  hr.classList.add("linea");
-  div2.appendChild(hr);
+  div2.appendChild(document.createElement("hr"));
 
-  // botn de comprar, color y el input con la cantidad
-  // no son funcionales por ahora y el de color es un extra
+  // funciones para el carrito
+  const getCart = () => {
+    try {
+      return JSON.parse(localStorage.getItem("cart") || "[]");
+    } catch (e) {
+      console.warn("Cart parse error, resetting cart", e);
+      localStorage.setItem("cart", "[]");
+      return [];
+    }
+  };
+
+  const isInCart = () => getCart().some((p) => String(p.id) === String(id));
+
+  const getTotalQuantity = (cart) =>
+    cart.reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+
+  // botón de comprar
   const buyButton = document.createElement("div");
   buyButton.classList.add("buy-button");
 
@@ -95,10 +104,9 @@ export const ProductInfo = ({
   quantity.min = 1;
   quantity.max = 10;
   quantity.step = 1;
-
   buyButton.appendChild(quantity);
 
-  // selector de color (extra)
+  // selector de color
   const colorSelectWrapper = document.createElement("div");
   colorSelectWrapper.classList.add("color-select-wrapper");
 
@@ -134,108 +142,121 @@ export const ProductInfo = ({
 
   buyButton.appendChild(colorSelectWrapper);
 
-  // botón de agregar al carrito
   const button = document.createElement("button");
-  button.onclick = () => {
-    const currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const productIndex = currentCart.findIndex((p) => p.id === id);
-    if (productIndex !== -1) {
-      return;
-    } else {
-      currentCart.push({
-        id,
-        cost,
-        currency,
-        description,
-        images: images[currentImage],
-        name,
-        quantity: parseInt(quantity.value),
-      });
-    }
-    localStorage.setItem("cart", JSON.stringify(currentCart));
-    const totalCount = JSON.parse(localStorage.getItem("cart")).length;
-    actualizarBadge(totalCount);
-  };
-
   button.classList.add("agregar-carrito");
-  button.innerText = "Agregar al carrito";
 
+  // comprar y ver carrtio
   const cartBtn = document.createElement("button");
   cartBtn.classList.add("agregar-carrito");
-  cartBtn.innerText = "Comprar";
-  cartBtn.onclick = () => {
-    const currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const productIndex = currentCart.findIndex((p) => p.id === id);
+
+  if (isInCart()) {
+    // si ya esta en el carrito
+    button.innerText = "En el carrito";
+    button.disabled = true;
+    button.classList.add("in-cart");
+    button.style.cursor = "not-allowed";
+    button.style.backgroundColor = "green";
+
+    cartBtn.innerText = "Ver carrito";
+    cartBtn.onclick = () => (window.location.href = "#/cart");
+  } else {
+    button.innerText = "Agregar al carrito";
+    button.disabled = false;
+
+    cartBtn.innerText = "Comprar";
+  }
+
+  // agregar al carrito
+  const addToCart = (goToCart = false) => {
+    const currentCart = getCart();
+    const productIndex = currentCart.findIndex(
+      (p) => String(p.id) === String(id)
+    );
+
     if (productIndex !== -1) {
-      return;
-    } else {
-      currentCart.push({
-        id,
-        cost,
-        currency,
-        description,
-        images: images[currentImage],
-        name,
-        quantity: parseInt(quantity.value),
-      });
+      return currentCart;
     }
+
+    const quantityValue = parseInt(quantity.value, 10) || 1;
+
+    currentCart.push({
+      id,
+      cost,
+      currency,
+      description,
+      images: images[currentImage],
+      name,
+      quantity: quantityValue,
+    });
+
     localStorage.setItem("cart", JSON.stringify(currentCart));
-    const totalCount = JSON.parse(localStorage.getItem("cart")).length;
+
+    const totalCount = getTotalQuantity(currentCart);
     actualizarBadge(totalCount);
 
-    window.location.href = "#/cart";
+    button.innerText = "En el carrito";
+    button.disabled = true;
+    button.classList.add("in-cart");
+    button.style.cursor = "not-allowed";
+    button.style.backgroundColor = "green";
+    cartBtn.innerText = "Ver carrito";
+    cartBtn.onclick = () => (window.location.href = "#/cart");
+
+    if (goToCart) {
+      window.location.href = "#/cart";
+    }
+
+    return currentCart;
   };
 
-  buyButton.appendChild(cartBtn);
+  button.addEventListener("click", () => {
+    if (isInCart()) return;
+    addToCart(false);
+  });
 
+  cartBtn.addEventListener("click", () => {
+    if (isInCart()) {
+      window.location.href = "#/cart";
+    } else {
+      addToCart(true);
+    }
+  });
+
+  buyButton.appendChild(cartBtn);
   buyButton.appendChild(button);
   div2.appendChild(buyButton);
 
-  //div para ver el carrito que por ahora no funciona
   const divVerCarrito = document.createElement("div");
   divVerCarrito.classList.add("ver-carrito-div");
 
-  //carrito tipo vector
   const carritoIcon = document.createElement("img");
   carritoIcon.src = "img/carro-de-la-compra.png";
   carritoIcon.alt = "Icono carrito";
   carritoIcon.classList.add("carrito-icon");
   divVerCarrito.appendChild(carritoIcon);
 
-  //botón de ver carrito
   const verCarrito = document.createElement("p");
   verCarrito.classList.add("ver-carrito");
   verCarrito.innerText = "Ver carrito";
+  verCarrito.onclick = () => (window.location.href = "#/cart");
   divVerCarrito.appendChild(verCarrito);
 
   div2.appendChild(divVerCarrito);
 
-  // linea dividiendo
-  const hr2 = document.createElement("hr");
-  hr2.classList.add("linea2");
-  div2.appendChild(hr2);
+  div2.appendChild(document.createElement("hr"));
 
-  // los extras que aparecen abajo
   const extras = document.createElement("div");
   extras.classList.add("extra-details");
+
   const categoryList = document.createElement("p");
   categoryList.classList.add("extra-details-p");
-  categoryList.innerHTML = `<strong>Categoria: </strong> ${category}`;
+  categoryList.innerHTML = `<strong>Categoria:</strong> ${category}`;
 
   const tagList = document.createElement("p");
-  tagList.innerHTML = `<strong>Tag: </strong> tag1, tag2`;
-
-  // los links, los quito por ahora
-  //const share = document.createElement("div");
-  //const shareOptions = links.map((link) => {
-  //return <a target='_blank' href=${link}>${link.split("")[0]}</a>;
-  //});
-
-  //share.innerHTML = <strong> Compartir: </strong> ${shareOptions};
+  tagList.innerHTML = `<strong>Tag:</strong> tag1, tag2`;
 
   extras.appendChild(categoryList);
   extras.appendChild(tagList);
-  //extras.appendChild(share);
 
   div2.appendChild(extras);
 
