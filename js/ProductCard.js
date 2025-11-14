@@ -2,11 +2,11 @@ import { Bolsa } from "../img/Bolsa-Compra.js";
 import { initProductPage } from "./product-info.js";
 
 window.handleClick = (id) => {
-    window.localStorage.removeItem('currentProduct')
-    window.localStorage.setItem('currentProductID', id)
-    initProductPage()
-    window.scrollTo({ top: 0, behavior: "smooth" })
-}
+  window.localStorage.removeItem("currentProduct");
+  window.localStorage.setItem("currentProductID", id);
+  initProductPage();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
 export const ProductCard = ({
   id,
@@ -31,7 +31,3 @@ export const ProductCard = ({
     </div>
     `;
 };
-
-
-
-
