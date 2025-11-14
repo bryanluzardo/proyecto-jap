@@ -65,9 +65,9 @@ document.addEventListener('click', (e) => {
 })
 
 function attachCategoryListeners() {
-  const autos = document.getElementById("autos")
-  const juguetes = document.getElementById("juguetes")
-  const muebles = document.getElementById("muebles")
+  const autos = document.querySelector("#autos")
+  const juguetes = document.querySelector("#juguetes")
+  const muebles = document.querySelector("#muebles")
   if (autos) autos.addEventListener("click", () => {
     localStorage.setItem("catID", 101)
     window.location.hash = "#/products"

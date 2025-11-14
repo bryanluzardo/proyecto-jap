@@ -2,7 +2,7 @@ import { actualizarBadge } from "../img/Cart-icon.js";
 
 const containerSelector = ".cart-container";
 
-let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+let cart = JSON.parse(localStorage.getItem("cart") || "[]")
 
 const CartProductCard = ({ product }) => {
   const costUSD = product.currency === "UYU" ? product.cost / 40 : product.cost;
@@ -84,7 +84,7 @@ const getContainer = () => document.querySelector(containerSelector);
 const renderCart = () => {
   const container = getContainer();
   cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  if (!container) return; // si la vista no está montada, no hacemos nada
+  if (!container) return; 
 
   container.innerHTML = "";
   if (cart.length === 0) {
