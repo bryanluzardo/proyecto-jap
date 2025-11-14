@@ -136,7 +136,7 @@ export { renderCart };
   feedbackContainer.style.margin = "12px 0";
   document.body.prepend(feedbackContainer);
 
-  finishBuying.addEventListener("click", onFinishClick);
+  //finishBuying.addEventListener("click", onFinishClick);
 
   function onFinishClick(e) {
     clearFeedback();
@@ -320,3 +320,4 @@ export { renderCart };
     feedbackContainer.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 })();
+
