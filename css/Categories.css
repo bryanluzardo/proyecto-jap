@@ -1,0 +1,68 @@
+/* modo día de la lavada de cara numero 1000 que le hemos dado a esta cría */
+
+#cat-list-container {
+  display: grid;
+  grid-template-columns: repeat(2, 30em);
+  gap: 1.5em;
+  font-family: "SFrounded", sans-serif;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  margin-right: 8.7em;
+  background-color: #fff;
+  color: #111;
+}
+
+h2 {
+  font-family: "SFrounded", sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-left: 9em;
+  margin-top: 2em;
+}
+
+.list-group-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1.5px solid #c7d7ff;
+  border-radius: 1.5em;
+  background-color: #fff;
+  padding: 1.5em;
+  width: auto;
+  max-width: 30em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+}
+
+.list-group-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.01);
+}
+
+.img-thumbnail {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #cat-list-container {
+    grid-template-columns: 1fr;
+    margin-right: 0;
+    padding: 0 1em;
+  }
+
+  h2 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .list-group-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

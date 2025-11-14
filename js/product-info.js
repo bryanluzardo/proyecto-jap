@@ -1,6 +1,7 @@
 import { ProductInfo } from "./ProductInfo.js";
 import { ProductCard } from "./ProductCard.js";
 import { crearResenia } from "./crearReseñas.js";
+import { RelatedProducts } from "./Componentes/RelatedProducts.js";
 
 export async function initProductPage() {
   const currentProduct = window.localStorage.getItem("currentProductID");
@@ -9,7 +10,8 @@ export async function initProductPage() {
   let contenedor = document.querySelector(".contenedor");
   if (!contenedor) {
     const root = document.querySelector("#root");
-    contenedor = (root && root.querySelector(".contenedor")) || root || document.body;
+    contenedor =
+      (root && root.querySelector(".contenedor")) || root || document.body;
   }
 
   if (!contenedor) {
@@ -39,13 +41,20 @@ export async function initProductPage() {
     titulo.textContent = "Productos relacionados";
     relatedWrapper.appendChild(titulo);
 
+    //función porque no me deja hacer appendchild normal
+    function htmlToElement(html) {
+      const template = document.createElement("template");
+      template.innerHTML = html.trim();
+      return template.content.firstChild;
+    }
+
     const relatedProductsContainer = document.createElement("div");
     relatedProductsContainer.classList.add("related-products");
 
     if (Array.isArray(product.relatedProducts)) {
       Array.from(product.relatedProducts).forEach((rel) => {
         relatedProductsContainer.appendChild(
-          ProductCard({ ...rel, isRelated: true })
+          htmlToElement(RelatedProducts({ ...rel, isRelated: true }))
         );
       });
     }

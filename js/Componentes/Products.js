@@ -1,6 +1,5 @@
-export function Products () {
-    return (
-        /* html */`
+export function Products() {
+  return /* html */ `
         <div id="tituloExtraCategoria"></div>
 
     <!--filtros entrega 3-->
@@ -45,10 +44,8 @@ export function Products () {
         </select>
       </div>
     </div>
-      <div class="contenedor" id="contenedorProductos">
+      <div class="contenedorcito" id="contenedorProductos">
       <div id="productos"></div>
     </div>
-        `
-    )
+        `;
 }
-
