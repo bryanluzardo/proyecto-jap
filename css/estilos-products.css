@@ -1,6 +1,7 @@
 .contenedor {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
   align-items: flex-start;
   margin-top: 20px;
 }
@@ -9,7 +10,6 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  flex: 0 1 calc(50% - 30px);
   box-sizing: border-box;
   margin: 15px;
   background-color: #ffffff;
@@ -116,3 +116,4 @@ body.dark-mode .producto:hover h3 {
     color: #000000;
   }
 }
+/* este mensaje es sólo para que git no ignore este archivo */

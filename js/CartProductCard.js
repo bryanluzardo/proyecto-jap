@@ -126,9 +126,11 @@ window.addEventListener("hashchange", () => {
 
 export { renderCart };
 
+// a partir de acá empieza el punto 2 de la entrega 7
+
 // a partir de este punto empieza el codigo de validación y feedback de compra
 
-function buyValidation () {
+function buyValidation() {
   const finishBuying = document.querySelector("#finish-buy-button");
 
   const feedbackContainer = document.createElement("div");
@@ -319,10 +321,8 @@ function buyValidation () {
     feedbackContainer.appendChild(p);
     feedbackContainer.scrollIntoView({ behavior: "smooth", block: "center" });
   }
-};
+}
 
 if (window.location.hash === "#/cart") {
   setTimeout(renderCart, 500);
 }
-
-
