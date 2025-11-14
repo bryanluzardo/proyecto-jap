@@ -3,7 +3,6 @@ export function Categories () {
         /* html */`
         <div class="text-center p-4">
         <h2>Categorías</h2>
-        <p class="lead">Verás aquí todas las categorías del sitio.</p>
       </div>
       <div class="container">
         <div class="row">
