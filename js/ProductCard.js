@@ -1,7 +1,7 @@
 import { Bolsa } from "../img/Bolsa-Compra.js";
 import { initProductPage } from "./product-info.js";
 
-const handleClick = () => {
+window.handleClick = (id) => {
     window.localStorage.removeItem('currentProduct')
     window.localStorage.setItem('currentProductID', id)
     initProductPage()
@@ -19,7 +19,7 @@ export const ProductCard = ({
   isRelated = false,
 }) => {
   return /* html */ `
-    <div class= "producto" onclick="handleClick()">
+    <div class= "producto" onclick="handleClick(${id})">
     <div class= "informacion-producto">
     <h3>${name}</h3>
     <p>${currency} ${cost}</p>
@@ -31,6 +31,7 @@ export const ProductCard = ({
     </div>
     `;
 };
+
 
 
 
