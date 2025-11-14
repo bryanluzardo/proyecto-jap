@@ -5,6 +5,7 @@ export function Cart () {
         <div class="cart-container">
         </div>
         <button id="checkout-button" class="btn btn-primary btn-lg">Comprar ahora</button>
+        <button id="finish-buy-button" class="btn btn-success btn-lg">Finalizar Compra</button>
         `
     )
 }

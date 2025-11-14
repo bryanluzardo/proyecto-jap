@@ -22,7 +22,6 @@ if (nav) {
   nav.innerHTML = Nav()
   initNavbarIcon()
   applySavedTheme()
-  
 }
 
 function router() {
