@@ -1,8 +1,6 @@
 export function ProductInfo() {
-    return (
-        /* html */`
-        <div class="contenedor">
+  return /* html */ `
+        <div class="contenedorcito">
         </div>
-        `
-    )
+        `;
 }
