@@ -238,8 +238,6 @@ body.dark-mode #checkout-button:hover {
   }
 }
 
-
-
 /* Celulares */
 @media (max-width: 480px) {
   body {
@@ -475,4 +473,39 @@ hr {
 .finalizar-compra-boton {
   display: flex;
   align-items: center;
+}
+
+/* Dark mode desde el botón interno */
+body.dark-mode .metodo-de-pago h5,
+body.dark-mode .direccion-de-envio h5,
+body.dark-mode .tipo-envio-bloque h5 {
+  color: #ffffff;
+}
+
+body.dark-mode .opciones-individuales:hover,
+body.dark-mode .metodos-pago:hover,
+body.dark-mode .direccion-de-envio input:hover,
+body.dark-mode .metodo-de-pago input:hover {
+  color: black;
+  background-color: #d3e8ff;
+}
+
+/* Dark mode desde el dispositivo */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #fff;
+  }
+  .metodo-de-pago h5,
+  .direccion-de-envio h5,
+  .tipo-envio-bloque h5 {
+    color: #ffffff;
+  }
+  .opciones-individuales:hover,
+  .metodos-pago:hover,
+  .direccion-de-envio input:hover,
+  .metodo-de-pago input:hover {
+    color: black;
+    background-color: #d3e8ff;
+  }
 }
