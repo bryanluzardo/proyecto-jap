@@ -128,7 +128,7 @@ export { renderCart };
 
 // a partir de este punto empieza el codigo de validación y feedback de compra
 
-(function () {
+function buyValidation () {
   const finishBuying = document.querySelector("#finish-buy-button");
 
   const feedbackContainer = document.createElement("div");
@@ -319,6 +319,10 @@ export { renderCart };
     feedbackContainer.appendChild(p);
     feedbackContainer.scrollIntoView({ behavior: "smooth", block: "center" });
   }
-})();
+};
+
+if (window.location.hash === "#/cart") {
+  setTimeout(renderCart, 500);
+}
 
 
