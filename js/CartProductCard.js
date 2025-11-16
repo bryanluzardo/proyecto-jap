@@ -126,7 +126,7 @@ if (window.location.hash === "#/cart") {
 
 window.addEventListener("hashchange", () => {
   if (window.location.hash === "#/cart") {
-    setTimeout(renderCart, 0);
+    loadCartPage();
   }
 });
 
@@ -136,6 +136,7 @@ export { renderCart };
 // a partir de este punto empieza el codigo de validación y feedback de compra
 
 function buyValidation() {
+  debugger;
   const finishBuying = document.querySelector("#finish-buy-button");
 
   const feedbackContainer = document.createElement("div");
@@ -318,11 +319,15 @@ console.log("finish-buy-button:", document.querySelector("#finish-buy-button"));
   }
 }
 
-if (window.location.hash === "#/cart") {
+function loadCartPage() {
   setTimeout(() => {
     renderCart();
-    buyValidation();
-  }, 500);
+    buyValidation(); 
+  }, 0);
+}
+
+if (window.location.hash === "#/cart") {
+  loadCartPage();
 }
 
 
