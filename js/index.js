@@ -13,6 +13,7 @@ import { MyProfile } from "./Componentes/MyProfile.js"
 import { initNavbarIcon } from "./navbar-icon.js"
 import { applySavedTheme } from "./color-mode.js"
 import { initProfileScript } from "./my-profile.js"
+import { initTotal } from "./cart.js"
 
 
 const nav = document.querySelector('.navbar>.container')
@@ -44,6 +45,7 @@ function router() {
   } else if (path === '/cart') {
     root.innerHTML = Cart()
     renderCart()
+    initTotal()
   } else if (path === '/my-profile') {
     root.innerHTML = MyProfile()
     initProfileScript()

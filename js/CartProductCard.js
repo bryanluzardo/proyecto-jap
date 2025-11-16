@@ -89,11 +89,13 @@ const renderCart = () => {
   if (!container) return; 
 
   container.innerHTML = "";
-  if (cart.length === 0) {
-    container.innerHTML = '<h1 class="empty-cart">El carrito está vacío</h1>';
-    actualizarBadge(0);
-    return;
-  }
+ if (cart.length === 0) {
+  container.innerHTML = '<h1 class="empty-cart">El carrito está vacío</h1>';
+  actualizarBadge(0);
+  document.dispatchEvent(new CustomEvent("totalAmountChanged", { detail: { value: 0 } }));
+
+  return;
+}
 
   cart.forEach((product) => {
     container.appendChild(CartProductCard({ product }));
