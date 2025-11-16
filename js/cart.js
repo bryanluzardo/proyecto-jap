@@ -30,10 +30,7 @@ const updateTotal = () => {
   if (subtotal) subtotal.textContent = `Subtotal: USD ${subtotalSinEnvio.toFixed(2)}`
 };
 
-document.addEventListener("totalAmountChanged", (e) => {
-  const value = e?.detail?.value
-  updateTotal(value)
-})
+document.addEventListener("totalAmountChanged", () => updateTotal())
 
 if (radios.length > 0) {
   radios.forEach(r => r.addEventListener('change', updateTotal));
