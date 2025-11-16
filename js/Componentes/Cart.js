@@ -128,6 +128,7 @@ export function Cart() {
   </div>
   <div class="finalizar-compra-boton">
     <button id="finish-buy-button">Finalizar Compra</button>
+    <div id="feedback-compra"></div>
   </div>
 </div>
 

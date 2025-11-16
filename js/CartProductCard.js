@@ -132,7 +132,6 @@ window.addEventListener("hashchange", () => {
 
 export { renderCart };
 
-// a partir de acá empieza el punto 2 de la entrega 7
 
 // a partir de este punto empieza el codigo de validación y feedback de compra
 
@@ -142,7 +141,8 @@ function buyValidation() {
   const feedbackContainer = document.createElement("div");
   feedbackContainer.id = "feedbackCompra";
   feedbackContainer.style.margin = "12px 0";
-  document.body.prepend(feedbackContainer);
+  const cartSection = document.querySelector("#feedback-compra");
+  cartSection.prepend(feedbackContainer);
 
   finishBuying.addEventListener("click", () => onFinishClick());
 
@@ -170,16 +170,22 @@ function buyValidation() {
 
     // Si todo ta joya → éxito
     showSuccess("¡Compra realizada con éxito!");
+
+    console.log("buyValidation se ejecuta");
+console.log("finish-buy-button:", document.querySelector("#finish-buy-button"));
+
   }
 
   function validateAddress(errors) {
-    const address = (getValue("#direccion") || "").trim();
-    const city = (getValue("#ciudad") || "").trim();
+    const address = (getValue("#calle") || "").trim();
+    const city = (getValue("#esquina") || "").trim();
+    const country = (getValue("#numero") || "").trim();
 
-    if (!address || !city) {
+    if (!address || !city || !country) {
       errors.push("Por favor completá la dirección y la ciudad.");
-      highlightIfExists("#direccion");
-      highlightIfExists("#ciudad");
+      highlightIfExists("#calle");
+      highlightIfExists("#esquina");
+      highlightIfExists("#numero");
       return false;
     }
 
@@ -187,18 +193,9 @@ function buyValidation() {
   }
 
   function validateShipping(errors) {
-    const select = document.querySelector("#shipping-method");
-    const radio = document.querySelector(
-      'input[name="shipping-method"]:checked'
-    );
+    const radio = document.querySelector('input[name="envio"]:checked');
 
-    if (select && !select.value) {
-      errors.push("Por favor seleccioná un método de envío.");
-      highlightIfExists("#shipping-method");
-      return false;
-    }
-
-    if (!select && !radio) {
+    if (!radio) {
       errors.push("Por favor seleccioná un método de envío.");
       return false;
     }
@@ -244,35 +241,26 @@ function buyValidation() {
   }
 
   function validatePayment(errors) {
-    const select = document.querySelector("#payment-method");
-    const radio = document.querySelector(
-      'input[name="payment-method"]:checked'
-    );
+    const radio = document.querySelector('input[name="pago"]:checked');
 
-    // Validación del método elegido (select o radio)
-    let metodo = null;
-
-    if (select) metodo = select.value;
-    if (!select && radio) metodo = radio.value;
+    let metodo = radio ? radio.value || radio.parentElement.textContent.trim() : null;
 
     if (!metodo) {
       errors.push("Por favor seleccioná un método de pago.");
-      highlightIfExists("#payment-method");
       return false;
     }
 
     // Si el método es tarjeta → validar campos
-    if (metodo === "tarjeta") {
-      const nro = (getValue("#numeroTarjeta") || "").trim();
-      const titular = (getValue("#titularTarjeta") || "").trim();
+    if (/tarjeta|crédito/i.test(metodo)) {
+      const nro = (getValue("#numero-tarjeta") || "").trim();
       const venc = (getValue("#vencimiento") || "").trim();
-      const cvv = (getValue("#cvv") || "").trim();
+      const cvv = (getValue("#cvc") || "").trim();
 
-      if (!nro || !titular || !venc || !cvv) {
+      if (!nro || !venc || !cvv) {
         errors.push(
           "Completá todos los datos de la tarjeta (número, titular, venc., CVV)."
         );
-        ["#numeroTarjeta", "#titularTarjeta", "#vencimiento", "#cvv"].forEach(
+        ["#numero-tarjeta", "#vencimiento", "#cvc"].forEach(
           highlightIfExists
         );
         return false;
@@ -294,11 +282,9 @@ function buyValidation() {
     if (el) el.classList.add("input-error");
   }
 
-  function clearFeedback() {
+ function clearFeedback() {
     feedbackContainer.innerHTML = "";
-    document
-      .querySelectorAll(".input-error")
-      .forEach((el) => el.classList.remove("input-error"));
+    document.querySelectorAll(".input-error").forEach((el) => el.classList.remove("input-error"));
   }
 
   function showErrors(errores) {
@@ -307,6 +293,7 @@ function buyValidation() {
     ul.style.background = "#ffebee";
     ul.style.padding = "10px";
     ul.style.borderRadius = "6px";
+    ul.style.margin = "0";
 
     errores.forEach((msg) => {
       const li = document.createElement("li");
@@ -315,6 +302,7 @@ function buyValidation() {
     });
 
     feedbackContainer.appendChild(ul);
+    feedbackContainer.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   function showSuccess(msg) {
@@ -324,13 +312,18 @@ function buyValidation() {
     p.style.background = "#e8f5e9";
     p.style.padding = "12px";
     p.style.borderRadius = "6px";
+    p.style.margin = "0";
     feedbackContainer.appendChild(p);
     feedbackContainer.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 }
 
-
-
 if (window.location.hash === "#/cart") {
-  setTimeout(buyValidation, 0);
+  setTimeout(() => {
+    renderCart();
+    buyValidation();
+  }, 500);
 }
+
+
+
