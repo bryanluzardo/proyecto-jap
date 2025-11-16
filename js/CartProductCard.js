@@ -104,6 +104,10 @@ const renderCart = () => {
     return acc + costUSD * p.quantity;
   }, 0);
 
+  const value = totalAmount
+  document.dispatchEvent(new CustomEvent("totalAmountChanged", { detail: { value } }))
+
+
   const total = document.createElement("p");
   total.textContent = `Total: USD ${totalAmount.toFixed(2)}`;
   total.classList.add("total-amount");
@@ -323,6 +327,8 @@ function buyValidation() {
   }
 }
 
+
+
 if (window.location.hash === "#/cart") {
-  setTimeout(renderCart, 500);
+  setTimeout(buyValidation, 0);
 }

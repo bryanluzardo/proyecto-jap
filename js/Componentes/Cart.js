@@ -29,37 +29,38 @@ export function Cart() {
   <h5>Tipo de envío</h5>
 
   <div class="opciones">
-    <div class="opciones-individuales">
-      <label>
-        <input type="radio" name="envio"> Premium (2 a 5 días)
-      </label>
-      <p>+15%</p>
-    </div>
 
+  <label>
     <div class="opciones-individuales">
-      <label>
-        <input type="radio" name="envio"> Express (5 a 8 días)
-      </label>
-      <p>+7%</p>
-    </div>
+        <input type="radio" name="envio" value="standard" checked> Standard (12 a 15 días)
+        <p>+5%</p>
+        </div>
+  </label>
 
+  <label>
     <div class="opciones-individuales">
-      <label>
-        <input type="radio" name="envio"> Standard (12 a 15 días)
-      </label>
-      <p>+5%</p>
-    </div>
+        <input type="radio" name="envio" value="express"> Express (5 a 8 días)
+        <p>+7%</p>
+        </div>
+  </label>
+
+  <label>
+    <div class="opciones-individuales">
+        <input type="radio" name="envio" value="premium"> Premium (2 a 5 días)
+        <p>+15%</p>
+        </div>
+  </label>
 
     <div class="total-envio">
       <p>Subtotal</p>
-      <p class="valor">Usd xxx</p>
+      <p class="valor subtotal">Usd xxx</p>
     </div>
 
     <hr />
 
     <div class="total-envio">
       <p>Total</p>
-      <p class="valor">Usd xxx</p>
+      <p class="valor total">Usd xxx</p>
     </div>
   </div>
 
