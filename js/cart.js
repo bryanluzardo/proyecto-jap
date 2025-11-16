@@ -1,8 +1,10 @@
 const total = document.querySelector(".total")
 const subtotal = document.querySelector(".subtotal")
-const express = document.querySelector("input[value='express']")
-const premium = document.querySelector("input[value='premium']")
-const standard = document.querySelector("input[value='standard']")
+const radios = Array.from(document.querySelectorAll('input[name="envio"]'))
+
+const express = radios.find(r => r.value === 'express')
+const premium = radios.find(r => r.value === 'premium')  
+const standard = radios.find(r => r.value === 'standard')
 
 const selected = () => {
   if (premium?.checked) return 0.15
@@ -33,8 +35,8 @@ document.addEventListener("totalAmountChanged", (e) => {
   updateTotal(value)
 })
 
-[express, premium, standard].forEach((r) => {
-  if (r) r.addEventListener("change", () => updateTotal())
-})
+if (radios.length > 0) {
+  radios.forEach(r => r.addEventListener('change', updateTotal));
+}
 
 updateTotal()
